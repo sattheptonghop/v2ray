@@ -39,11 +39,11 @@ email = driver.find_element("class name",'mailtext').get_attribute('value')
 username, domain = email.split('@')
 
 # Mở trang web 10minutemail.net
-driver.close()
+#driver.close()
 driver.get("https://trumvpn.pro/#/register")
 # Tìm phần tử với class là "tbclose-btn" và gọi hàm click() (nếu phần tử tồn tại)
 try:
-    close_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME, "tbclose-btn")))
+    close_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "tbclose-btn")))
     close_button.click()
     print('Đóng bảng thành công')
 except:
@@ -73,13 +73,13 @@ try:
     input2_element.send_keys("63668890")
     print('pa1 pass 2 ok')
 except:
-    # Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
-    input1_element = driver.find_element("xpath", "//input[@placeholder='Mật khẩu']")
-    input1_element.send_keys("63668890")
+    driver.send_keys(Keys.TAB)
+    driver.send_keys(Keys.TAB)
+    driver.send_keys(Keys.TAB)
+    driver.send_keys("63668890")
     print('pa2 pass 1 ok')
-    # Tìm phần tử input bằng placeholder và nhập chữ
-    input2_element = driver.find_element("xpath", "//input[@placeholder='Nhập lại mật khẩu']")
-    input2_element.send_keys("63668890")
+    driver.send_keys(Keys.TAB)
+    driver.send_keys("63668890")
     print('pa2 pass 2 ok')
     pass
     
