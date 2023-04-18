@@ -36,11 +36,34 @@ wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'mailtext')))
 # Lấy địa chỉ email mới
 email = driver.find_element("class name",'mailtext').get_attribute('value')
 
+# Mở trang web 10minutemail.net
+driver.get("https://trumvpn.pro/#/register")
+# Tìm phần tử input bằng placeholder và nhập chữ
+inpute_element = driver.find_element("xpath","//input[@placeholder='Email']")
+inpute_element.send_keys(email)
+# Tìm phần tử input bằng placeholder và nhập chữ
+input1_element = driver.find_element("xpath","//input[@placeholder='Mật khẩu']")
+input1_element.send_keys("63668890")
+# Tìm phần tử input bằng placeholder và nhập chữ
+input2_element = driver.find_element("xpath","//input[@placeholder='Nhập lại mật khẩu']")
+input2_element.send_keys("63668890")
+# Tìm phần tử button bằng nội dung và click vào nó
+buttondk_element = driver.find_element("xpath","//button[text()='Đăng ký']")
+buttondk_element.click()
+# Tìm phần tử button bằng nội dung và click vào nó
+button_element = driver.find_element("xpath","//button[text()='Nhấp vào đây để đồng bộ máy chủ']")
+button_element.click()
+# Tìm phần tử button bằng nội dung và click vào nó
+button_element = driver.find_element("xpath","//button[text()='Sao chép liên kết']")
+button_element.click()
+# Lấy giá trị từ bộ nhớ ra và gán vào biến result
+result = driver.execute_script("return window.getSelection().toString();")
+
 # Tạo một bộ sưu tập dữ liệu trống để lưu trữ tiêu đề
-data = [['Tiêu đề của trang']]
+data = [['V2ray trumvpn.pro']]
 
 # Thêm tiêu đề vào bộ sưu tập dữ liệu
-data.append([email])
+data.append([result])
 
 # Mở tệp CSV để ghi dữ liệu
 with open('google_title.csv', mode='w', newline='') as file:
