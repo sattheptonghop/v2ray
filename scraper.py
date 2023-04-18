@@ -103,8 +103,8 @@ data.append([result])
 
 # Mở tệp CSV để ghi dữ liệu
 with open('google_title.csv', mode='w', newline='') as file:
-writer = csv.writer(file)
-writer.writerows(data)
+    writer = csv.writer(file)
+    writer.writerows(data)
 
 # Đóng trình duyệt web
 driver.quit()
