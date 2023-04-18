@@ -73,14 +73,14 @@ print('user ok')
     #input2_element.send_keys("63668890")
     #print('pa1 pass 2 ok')
 #except:
-    Keys.current_frame.send_keys(Keys.TAB)
-    Keys.current_frame.send_keys(Keys.TAB)
-    Keys.current_frame.send_keys(Keys.TAB)
-    Keys.current_frame.send_keys("63668890")
-    print('pa2 pass 1 ok')
-    Keys.current_frame.send_keys(Keys.TAB)
-    Keys.current_frame.send_keys("63668890")
-    print('pa2 pass 2 ok')
+Keys.current_frame.send_keys(Keys.TAB)
+Keys.current_frame.send_keys(Keys.TAB)
+Keys.current_frame.send_keys(Keys.TAB)
+Keys.current_frame.send_keys("63668890")
+print('pa2 pass 1 ok')
+Keys.current_frame.send_keys(Keys.TAB)
+Keys.current_frame.send_keys("63668890")
+print('pa2 pass 2 ok')
     #pass
     
 # Tìm phần tử button bằng nội dung và click vào nó
@@ -103,8 +103,8 @@ data.append([result])
 
 # Mở tệp CSV để ghi dữ liệu
 with open('google_title.csv', mode='w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerows(data)
+writer = csv.writer(file)
+writer.writerows(data)
 
 # Đóng trình duyệt web
 driver.quit()
