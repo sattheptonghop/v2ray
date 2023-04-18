@@ -45,6 +45,14 @@ try:
     close_button.click()
 except:
     pass
+try:
+    lang_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "far fa fa-language")))
+    lang_button.click()
+    langvn_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.LINK_TEXT, "Tiếng Việt")))
+    langvn_button.click()
+except:
+    pass
+
 # Tìm phần tử input bằng placeholder và nhập chữ
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
 inpute_element.send_keys(email)
