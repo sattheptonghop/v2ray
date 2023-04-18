@@ -19,7 +19,8 @@ options = [
     "--ignore-certificate-errors",
     "--disable-extensions",
     "--no-sandbox",
-    "--disable-dev-shm-usage"
+    "--disable-dev-shm-usage",
+    "--lang=vi"
 ]
 for option in options:
     chrome_options.add_argument(option)
@@ -42,7 +43,7 @@ driver.get("https://trumvpn.pro/#/register")
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
 
 inpute_element.send_keys(email)
-# Tìm phần tử input bằng placeholder và nhập chữ
+# Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
 input1_element = driver.find_element("xpath", "//input[@placeholder='Mật khẩu']")
 input1_element.send_keys("63668890")
 # Tìm phần tử input bằng placeholder và nhập chữ
