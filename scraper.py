@@ -39,6 +39,10 @@ email = driver.find_element("class name",'mailtext').get_attribute('value')
 
 # Mở trang web 10minutemail.net
 driver.get("https://trumvpn.pro/#/register")
+
+# Tìm phần tử button bằng nội dung và click vào nó
+button24h_element = driver.find_element("xpath", "//button[text()='Tắt trong 24h']")
+button24h_element.click()
 # Tìm phần tử input bằng placeholder và nhập chữ
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
 
