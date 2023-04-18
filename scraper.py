@@ -21,5 +21,22 @@ for option in options:
 
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
-driver.get('http://nytimes.com')
-print(driver.title)
+# Mở trang web Google
+driver.get("https://www.google.com")
+
+# Lấy tiêu đề của trang
+title = driver.title
+
+# Tạo một bộ sưu tập dữ liệu trống để lưu trữ tiêu đề
+data = [['Tiêu đề của trang']]
+
+# Thêm tiêu đề vào bộ sưu tập dữ liệu
+data.append([title])
+
+# Mở tệp CSV để ghi dữ liệu
+with open('google_title.csv', mode='w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
+
+# Đóng trình duyệt web
+driver.quit()
