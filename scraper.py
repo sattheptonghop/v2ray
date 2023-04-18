@@ -39,6 +39,7 @@ email = driver.find_element("class name",'mailtext').get_attribute('value')
 username, domain = email.split('@')
 
 # Mở trang web 10minutemail.net
+driver.close()
 driver.get("https://trumvpn.pro/#/register")
 # Tìm phần tử với class là "tbclose-btn" và gọi hàm click() (nếu phần tử tồn tại)
 try:
