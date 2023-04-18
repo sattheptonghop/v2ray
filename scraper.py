@@ -36,6 +36,7 @@ wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'mailtext')))
 
 # Lấy địa chỉ email mới
 email = driver.find_element("class name",'mailtext').get_attribute('value')
+username, domain = email.split('@')
 
 # Mở trang web 10minutemail.net
 driver.get("https://trumvpn.pro/#/register")
@@ -43,24 +44,28 @@ driver.get("https://trumvpn.pro/#/register")
 try:
     close_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "tbclose-btn")))
     close_button.click()
+    print('Đóng bảng thành công')
 except:
+    print('Đóng bảng ko thành công')
     pass
 try:
     lang_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "far fa fa-language")))
     lang_button.click()
     langvn_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.LINK_TEXT, "Tiếng Việt")))
     langvn_button.click()
+    print('Chuyển tiếng việt thành công')
 except:
+    print('Chuyển tiếng việt ko thành công')
     pass
 
 # Tìm phần tử input bằng placeholder và nhập chữ
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
-inpute_element.send_keys(email)
+inpute_element.send_keys(username)
 # Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
-input1_element = driver.find_element("xpath", "//input[@type='password'][1]")
+input1_element = driver.find_element("xpath", "//input[@type='password'][0]")
 input1_element.send_keys("63668890")
 # Tìm phần tử input bằng placeholder và nhập chữ
-input2_element = driver.find_element("xpath", "//input[@type='password'][2]")
+input2_element = driver.find_element("xpath", "//input[@type='password'][1]")
 input2_element.send_keys("63668890")
 # Tìm phần tử button bằng nội dung và click vào nó
 buttondk_element = driver.find_element("xpath", "//button[text()='Register']")
