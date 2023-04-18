@@ -42,16 +42,16 @@ username, domain = email.split('@')
 driver.get("https://trumvpn.pro/#/register")
 # Tìm phần tử với class là "tbclose-btn" và gọi hàm click() (nếu phần tử tồn tại)
 try:
-    close_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "tbclose-btn")))
+    close_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME, "tbclose-btn")))
     close_button.click()
     print('Đóng bảng thành công')
 except:
     print('Đóng bảng ko thành công')
     pass
 try:
-    lang_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "far fa fa-language")))
+    lang_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME, "ant-dropdown-trigger btn btn-black mr-1")))
     lang_button.click()
-    langvn_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.LINK_TEXT, "Tiếng Việt")))
+    langvn_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.LINK_TEXT, "Tiếng Việt")))
     langvn_button.click()
     print('Chuyển tiếng việt thành công')
 except:
@@ -62,15 +62,26 @@ except:
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
 inpute_element.send_keys(username)
 print('user ok')
-# Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
-input1_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='password']")))
-input1_element.send_keys("63668890")
-print('pass 1 ok')
-# Tìm phần tử input bằng placeholder và nhập chữ
-#input2_element = driver.find_element("xpath", "//input[@placeholder='Password']")[1]
-input2_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='password'][2]")))
-input2_element.send_keys("63668890")
-print('pass 2 ok')
+try:
+    # Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
+    input1_element = driver.find_element("xpath", "//input[@placeholder='password']")
+    input1_element.send_keys("63668890")
+    print('pa1 pass 1 ok')
+    # Tìm phần tử input bằng placeholder và nhập chữ
+    input2_element = driver.find_element("xpath", "//input[@placeholder='password']")[2]
+    input2_element.send_keys("63668890")
+    print('pa1 pass 2 ok')
+except:
+    # Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
+    input1_element = driver.find_element("xpath", "//input[@placeholder='Mật khẩu']")
+    input1_element.send_keys("63668890")
+    print('pa2 pass 1 ok')
+    # Tìm phần tử input bằng placeholder và nhập chữ
+    input2_element = driver.find_element("xpath", "//input[@placeholder='Nhập lại mật khẩu']")
+    input2_element.send_keys("63668890")
+    print('pa2 pass 2 ok')
+    pass
+    
 # Tìm phần tử button bằng nội dung và click vào nó
 buttondk_element = driver.find_element("xpath", "//button[text()='Register']")
 buttondk_element.click()
