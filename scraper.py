@@ -39,11 +39,12 @@ email = driver.find_element("class name",'mailtext').get_attribute('value')
 
 # Mở trang web 10minutemail.net
 driver.get("https://trumvpn.pro/#/register")
-
-# Tìm phần tử button bằng nội dung và click vào nó
-buttoneh_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "tbclose-btn")))
-#driver.find_element("class name",'tbclose-btn')
-buttoneh_element.click()
+# Tìm phần tử với class là "tbclose-btn" và gọi hàm click() (nếu phần tử tồn tại)
+try:
+    close_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "tbclose-btn")))
+    close_button.click()
+except:
+    pass
 # Tìm phần tử input bằng placeholder và nhập chữ
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
 inpute_element.send_keys(email)
