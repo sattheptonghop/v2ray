@@ -22,17 +22,21 @@ for option in options:
 
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
-# Mở trang web Google
-driver.get("https://www.google.com")
+# Mở trang web 10minutemail.net
+driver.get("https://10minutemail.net")
 
-# Lấy tiêu đề của trang
-title = driver.title
+# Chờ cho trang web tải hoàn tất
+wait = WebDriverWait(driver, 10)
+wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'mailtext')))
+
+# Lấy địa chỉ email mới
+email = driver.find_element_by_class_name('mailtext').get_attribute('value')
 
 # Tạo một bộ sưu tập dữ liệu trống để lưu trữ tiêu đề
 data = [['Tiêu đề của trang']]
 
 # Thêm tiêu đề vào bộ sưu tập dữ liệu
-data.append([title])
+data.append([email])
 
 # Mở tệp CSV để ghi dữ liệu
 with open('google_title.csv', mode='w', newline='') as file:
