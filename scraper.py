@@ -61,12 +61,15 @@ except:
 # Tìm phần tử input bằng placeholder và nhập chữ
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
 inpute_element.send_keys(username)
+print('user ok')
 # Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
-input1_element = driver.find_element("xpath", "//input[@type='password'][1]")
+input1_element = driver.find_element("xpath", "//input[@placeholder='Password'][1]")
 input1_element.send_keys("63668890")
+print('pass 1 ok')
 # Tìm phần tử input bằng placeholder và nhập chữ
-input2_element = driver.find_element("xpath", "//input[@type='password'][2]")
+input2_element = driver.find_element("xpath", "//input[@placeholder='Password'][2]")
 input2_element.send_keys("63668890")
+print('pass 2 ok')
 # Tìm phần tử button bằng nội dung và click vào nó
 buttondk_element = driver.find_element("xpath", "//button[text()='Register']")
 buttondk_element.click()
