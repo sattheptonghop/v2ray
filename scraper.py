@@ -73,13 +73,13 @@ try:
     input2_element.send_keys("63668890")
     print('pa1 pass 2 ok')
 except:
-    driver.send_keys(Keys.TAB)
-    driver.send_keys(Keys.TAB)
-    driver.send_keys(Keys.TAB)
-    driver.send_keys("63668890")
+    inpute_element.send_keys(Keys.TAB)
+    Keys.current_frame.send_keys.send_keys(Keys.TAB)
+    Keys.current_frame.send_keys.send_keys(Keys.TAB)
+    Keys.current_frame.send_keys.send_keys("63668890")
     print('pa2 pass 1 ok')
-    driver.send_keys(Keys.TAB)
-    driver.send_keys("63668890")
+    Keys.current_frame.send_keys.send_keys(Keys.TAB)
+    Keys.current_frame.send_keys.send_keys("63668890")
     print('pa2 pass 2 ok')
     pass
     
