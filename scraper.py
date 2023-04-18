@@ -41,11 +41,10 @@ email = driver.find_element("class name",'mailtext').get_attribute('value')
 driver.get("https://trumvpn.pro/#/register")
 
 # Tìm phần tử button bằng nội dung và click vào nó
-button24h_element = driver.find_element("xpath", "//button[text()='Tắt trong 24h']")
+button24h_element = driver.find_element("class name",'tbclose-btn')
 button24h_element.click()
 # Tìm phần tử input bằng placeholder và nhập chữ
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
-
 inpute_element.send_keys(email)
 # Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
 input1_element = driver.find_element("xpath", "//input[@placeholder='Mật khẩu']")
