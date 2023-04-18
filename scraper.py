@@ -63,16 +63,16 @@ except:
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
 inpute_element.send_keys(username)
 print('user ok')
-try:
+#try:
     # Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
-    input1_element = driver.find_element("xpath", "//input[@placeholder='password']")
-    input1_element.send_keys("63668890")
-    print('pa1 pass 1 ok')
+    #input1_element = driver.find_element("xpath", "//input[@placeholder='password']")
+    #input1_element.send_keys("63668890")
+    #print('pa1 pass 1 ok')
     # Tìm phần tử input bằng placeholder và nhập chữ
-    input2_element = driver.find_element("xpath", "//input[@placeholder='password']")[2]
-    input2_element.send_keys("63668890")
-    print('pa1 pass 2 ok')
-except:
+    #input2_element = driver.find_element("xpath", "//input[@placeholder='password']")[2]
+    #input2_element.send_keys("63668890")
+    #print('pa1 pass 2 ok')
+#except:
     inpute_element.send_keys(Keys.TAB)
     Keys.current_frame.send_keys.send_keys(Keys.TAB)
     Keys.current_frame.send_keys.send_keys(Keys.TAB)
@@ -81,7 +81,7 @@ except:
     Keys.current_frame.send_keys.send_keys(Keys.TAB)
     Keys.current_frame.send_keys.send_keys("63668890")
     print('pa2 pass 2 ok')
-    pass
+    #pass
     
 # Tìm phần tử button bằng nội dung và click vào nó
 buttondk_element = driver.find_element("xpath", "//button[text()='Register']")
