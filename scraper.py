@@ -51,6 +51,7 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 # 12 | type | css=.form-group:nth-child(3) > .form-control | 63668890
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
+driver.execute_script("window.scrollTo(0,306)")
 while driver.current_url == "https://trumvpn.pro/#/register":
 	driver.implicitly_wait(10)
 	driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]").click()
