@@ -65,8 +65,8 @@ input2_element.send_keys("63668890")
 print('pa1 pass 2 ok')
 
     
-# Tìm phần tử button bằng nội dung và click vào nó
-driver.find_element("xpath", "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").click()
+# dang ky
+driver.find_element("xpath", "(//button[@type='button'])[3]").click()
 # Tìm phần tử button bằng nội dung và click vào nó
 driver.find_element("xpath", "//button[text()='Nhấp vào đây để đồng bộ máy chủ']").click()
 # Tìm phần tử button bằng nội dung và click vào nó
