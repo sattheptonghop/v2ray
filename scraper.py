@@ -28,7 +28,8 @@ options = [
     "--lang=vi"
 ]
 for option in options:
-chrome_options.add_argument(option)
+    chrome_options.add_argument(option)
+#driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 class TestOk():
   def setup_method(self, method):
