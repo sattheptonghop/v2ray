@@ -50,13 +50,14 @@ driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 try:
-    driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").click()
+    element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
+    driver.execute_script("arguments[0].click();", element)
     print("dk=pa1")
 except:
     element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
     actions = ActionChains(driver)
     actions.move_to_element(element).perform()
-    element.click()
+    driver.execute_script("arguments[0].click();", element)
     print("dk=pa2")
     pass
 
@@ -96,6 +97,8 @@ actions.move_to_element(element).perform()
 # 23 | click | linkText=Đăng xuất | 
 driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
+# Lấy giá trị từ bộ nhớ ra và gán vào biến result
+result = driver.execute_script("return window.getSelection().toString();")
 # Tạo một bộ sưu tập dữ liệu trống để lưu trữ tiêu đề
 data = [['V2ray trumvpn.pro']]
 # Thêm tiêu đề vào bộ sưu tập dữ liệu
