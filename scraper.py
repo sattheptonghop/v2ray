@@ -49,12 +49,8 @@ except:
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div/div/input").send_keys(username)
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
-element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
+element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
 driver.execute_script("arguments[0].click();", element)
-print (driver.current_url)
-driver.execute_script("arguments[1].click();", element)
-print (driver.current_url)
-driver.execute_script("arguments[2].click();", element)
 print (driver.current_url)
 try:
     # 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
