@@ -45,48 +45,28 @@ username, domain = email.split('@')
 driver.get("https://trumvpn.pro/#/register")
 # Tìm phần tử với class là "tbclose-btn" và gọi hàm click() (nếu phần tử tồn tại)
 try:
-    close_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "tbclose-btn")))
-    close_button.click()
+    driver.find_element_by_css_selector(".tbclose-btn").click()
     print('Đóng bảng thành công')
 except:
     print('Đóng bảng ko thành công')
-    pass
-try:
-    lang_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME, "ant-dropdown-trigger btn btn-black mr-1")))
-    lang_button.click()
-    langvn_button = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.LINK_TEXT, "Tiếng Việt")))
-    langvn_button.click()
-    print('Chuyển tiếng việt thành công')
-except:
-    print('Chuyển tiếng việt ko thành công')
     pass
 
 # Tìm phần tử input bằng placeholder và nhập chữ
 inpute_element = driver.find_element("xpath", "//input[@placeholder='Email']")
 inpute_element.send_keys(username)
 print('user ok')
-#try:
-    # Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
-    #input1_element = driver.find_element("xpath", "//input[@placeholder='password']")
-    #input1_element.send_keys("63668890")
-    #print('pa1 pass 1 ok')
+# Tìm phần tử input bằng placeholder 'Mật khẩu' và nhập chữ 
+input1_element = driver.find_element("xpath", "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div[2]/input")
+input1_element.send_keys("63668890")
+print('pa1 pass 1 ok')
     # Tìm phần tử input bằng placeholder và nhập chữ
-    #input2_element = driver.find_element("xpath", "//input[@placeholder='password']")[2]
-    #input2_element.send_keys("63668890")
-    #print('pa1 pass 2 ok')
-#except:
-Keys.current_frame.send_keys(Keys.TAB)
-Keys.current_frame.send_keys(Keys.TAB)
-Keys.current_frame.send_keys(Keys.TAB)
-Keys.current_frame.send_keys("63668890")
-print('pa2 pass 1 ok')
-Keys.current_frame.send_keys(Keys.TAB)
-Keys.current_frame.send_keys("63668890")
-print('pa2 pass 2 ok')
-    #pass
+input2_element = driver.find_element("xpath", "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div[3]/input")
+input2_element.send_keys("63668890")
+print('pa1 pass 2 ok')
+
     
 # Tìm phần tử button bằng nội dung và click vào nó
-buttondk_element = driver.find_element("xpath", "//button[text()='Register']")
+buttondk_element = driver.find_element("xpath", "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
 buttondk_element.click()
 # Tìm phần tử button bằng nội dung và click vào nó
 buttondb_element = driver.find_element("xpath", "//button[text()='Nhấp vào đây để đồng bộ máy chủ']")
