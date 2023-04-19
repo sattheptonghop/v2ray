@@ -50,12 +50,13 @@ driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 try:
-    driver.find_element(By.XPATH, "//div[2]/button").click()
+    driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").click()
     print("dk=pa1")
 except:
-    element = driver.find_element(By.XPATH, "//div[2]/button")
+    element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
     actions = ActionChains(driver)
     actions.move_to_element(element).perform()
+    element.click()
     print("dk=pa2")
     pass
 
