@@ -54,7 +54,7 @@ print("dk=ok")
 
 wait = WebDriverWait(driver, 10)
 # 14 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
-driver.find_element(By.LINK_TEXT, "Nhấp vào đây để đồng bộ máy chủ").send_keys("\n")
+driver.find_element(By.XPATH, //a[contains(text(),'Nhấp vào đây để đồng bộ máy chủ')]).send_keys("\n")
 # 15 | runScript | window.scrollTo(0,306) | 
 driver.execute_script("window.scrollTo(0,306)")
 # 16 | click | linkText=Sao chép liên kết | 
