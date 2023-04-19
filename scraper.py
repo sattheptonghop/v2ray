@@ -49,7 +49,15 @@ except:
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div/div/input").send_keys(username)
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
-driver.find_element(By.CSS_SELECTOR, ".btn-block").click()
+try:
+    driver.find_element(By.XPATH, "//div[2]/button").click()
+    Print("dk=pa1")
+except:
+    element = driver.find_element(By.XPATH, "//div[2]/button")
+    actions = ActionChains(driver)
+    actions.move_to_element(element).perform()
+    Print("dk=pa2")
+    pass
 
 wait = WebDriverWait(driver, 10)
 # 13 | mouseOver | css=.row:nth-child(1) .font-size-base | 
