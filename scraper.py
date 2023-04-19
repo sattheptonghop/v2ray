@@ -49,23 +49,16 @@ except:
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div/div/input").send_keys(username)
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
-try:
-    driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").send_keys("\n")
-    print("dk=pa1")
-except:
-    element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
-    driver.execute_script("arguments[0].scrollIntoView();", element)
-    driver.execute_script("arguments[0].click();", element)
-    print("dk=pa2")
-    pass
+driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").send_keys("\n")
+print("dk=ok")
 
 wait = WebDriverWait(driver, 10)
 # 14 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
-driver.find_element(By.LINK_TEXT, "Nhấp vào đây để đồng bộ máy chủ").click()
+driver.find_element(By.LINK_TEXT, "Nhấp vào đây để đồng bộ máy chủ").send_keys("\n")
 # 15 | runScript | window.scrollTo(0,306) | 
 driver.execute_script("window.scrollTo(0,306)")
 # 16 | click | linkText=Sao chép liên kết | 
-driver.find_element(By.LINK_TEXT, "Sao chép liên kết").click()
+driver.find_element(By.LINK_TEXT, "Sao chép liên kết").send_keys("\n")
 # 17 | mouseOver | linkText=Sao chép liên kết | 
 element = driver.find_element(By.LINK_TEXT, "Sao chép liên kết")
 actions = ActionChains(driver)
