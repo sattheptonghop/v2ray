@@ -52,13 +52,18 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").send_keys("\n")
 print("dk=ok")
 
-wait = WebDriverWait(driver, 10)
-# 14 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
-driver.find_element(By.XPATH, //a[contains(text(),'Nhấp vào đây để đồng bộ máy chủ')]).send_keys("\n")
+# 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
+element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
+actions = ActionChains(driver)
+actions.move_to_element(element).perform()
 # 15 | runScript | window.scrollTo(0,306) | 
 driver.execute_script("window.scrollTo(0,306)")
-# 16 | click | linkText=Sao chép liên kết | 
-driver.find_element(By.LINK_TEXT, "Sao chép liên kết").send_keys("\n")
+# 16 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
+driver.find_element(By.XPATH, "//a[contains(text(),\'Nhấp vào đây để đồng bộ máy chủ\')]").click()
+# 17 | mouseOver | linkText=Sao chép liên kết | 
+element = driver.find_element(By.LINK_TEXT, "Sao chép liên kết")
+actions = ActionChains(driver)
+actions.move_to_element(element).perform()
 # 17 | mouseOver | linkText=Sao chép liên kết | 
 element = driver.find_element(By.LINK_TEXT, "Sao chép liên kết")
 actions = ActionChains(driver)
@@ -67,21 +72,17 @@ actions.move_to_element(element).perform()
 element = driver.find_element(By.CSS_SELECTOR, "body")
 actions = ActionChains(driver)
 actions.move_to_element(element, 0, 0).perform()
-# 19 | mouseOver | css=.fa-angle-down | 
+# 19 | click | linkText=Sao chép liên kết | 
+driver.find_element(By.LINK_TEXT, "Sao chép liên kết").click()
+# 20 | mouseOver | css=.fa-angle-down | 
 element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
 actions = ActionChains(driver)
 actions.move_to_element(element).perform()
-# 20 | mouseOut | css=.fa-angle-down | 
-element = driver.find_element(By.CSS_SELECTOR, "body")
-actions = ActionChains(driver)
-actions.move_to_element(element, 0, 0).perform()
-# 21 | click | css=.ant-dropdown-open | 
-driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-open").click()
-# 22 | mouseOver | css=.ant-dropdown-trigger:nth-child(5) | 
+# 21 | mouseOver | css=.ant-dropdown-trigger:nth-child(5) | 
 element = driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-trigger:nth-child(5)")
 actions = ActionChains(driver)
 actions.move_to_element(element).perform()
-# 23 | click | linkText=Đăng xuất | 
+# 22 | click | linkText=Đăng xuất | 
 driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
 # Lấy giá trị từ bộ nhớ ra và gán vào biến result
