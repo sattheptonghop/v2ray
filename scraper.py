@@ -60,10 +60,6 @@ except:
     pass
 
 wait = WebDriverWait(driver, 10)
-# 13 | mouseOver | css=.row:nth-child(1) .font-size-base | 
-element = driver.find_element(By.XPATH, "//div[@id='rc-tabs-0-panel-knowledge']/div/div/div/div[2]/a/h5")
-actions = ActionChains(driver)
-actions.move_to_element(element).perform()
 # 14 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
 driver.find_element(By.LINK_TEXT, "Nhấp vào đây để đồng bộ máy chủ").click()
 # 15 | runScript | window.scrollTo(0,306) | 
