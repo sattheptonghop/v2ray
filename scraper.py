@@ -45,7 +45,8 @@ username, domain = email.split('@')
 driver.get("https://trumvpn.pro/#/register")
 # Tìm phần tử với class là "tbclose-btn" và gọi hàm click() (nếu phần tử tồn tại)
 try:
-    driver.find_element("xpath", "//div[@onclick='dong24h()']").click()
+    #driver.find_element("xpath", "//div[@onclick='dong24h()']").click()
+    driver.find_element("css selector", ".tbclose-btn, //div[@onclick='dong24h()']").click()
     print('Đóng bảng thành công')
 except:
     print('Đóng bảng ko thành công')
@@ -66,7 +67,7 @@ print('pa1 pass 2 ok')
 
     
 # dang ky
-driver.find_element("xpath", "(//button[@type='button'])[3]").click()
+driver.find_element("css selector", ".btn-block, //div[2]/button").click()
 # Tìm phần tử button bằng nội dung và click vào nó
 driver.find_element("xpath", "//button[text()='Nhấp vào đây để đồng bộ máy chủ']").click()
 # Tìm phần tử button bằng nội dung và click vào nó
