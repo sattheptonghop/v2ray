@@ -25,7 +25,7 @@ options = [
     "--disable-extensions",
     "--no-sandbox",
     "--disable-dev-shm-usage",
-    "--lang=vi"
+    #"--lang=vi"
 ]
 for option in options:
     chrome_options.add_argument(option)
