@@ -48,7 +48,7 @@ except:
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div/div/input").send_keys(username)
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
-driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]").click()
+driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").click()
 driver.execute_script("window.scrollTo(0,0)")
 #loi {"method":"css selector","selector":"a > .text-center > div:nth-child(1)"}
 wait = WebDriverWait(driver, 10)
