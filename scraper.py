@@ -66,14 +66,11 @@ print('pa1 pass 2 ok')
 
     
 # Tìm phần tử button bằng nội dung và click vào nó
-buttondk_element = driver.find_element("xpath", "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
-buttondk_element.click()
+driver.find_element("xpath", "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").click()
 # Tìm phần tử button bằng nội dung và click vào nó
-buttondb_element = driver.find_element("xpath", "//button[text()='Nhấp vào đây để đồng bộ máy chủ']")
-buttondb_element.click()
+driver.find_element("xpath", "//button[text()='Nhấp vào đây để đồng bộ máy chủ']").click()
 # Tìm phần tử button bằng nội dung và click vào nó
-buttonsc_element = driver.find_element("xpath", "//button[text()='Sao chép liên kết']")
-buttonsc_element.click()
+driver.find_element("xpath", "//button[text()='Sao chép liên kết']").click()
 # Lấy giá trị từ bộ nhớ ra và gán vào biến result
 result = driver.execute_script("return window.getSelection().toString();")
 
