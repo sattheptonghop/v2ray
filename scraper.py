@@ -54,7 +54,7 @@ while driver.current_url == "https://trumvpn.pro/#/register":
 	driver.implicitly_wait(10)
 	try:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
-		element.scrollIntoView()
+		element.location_once_scrolled_into_view
 		element.click()
 	except:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
