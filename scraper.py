@@ -15,23 +15,23 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+chrome_options = Options()
+options = [
+    "--headless",
+    "--disable-gpu",
+    "--window-size=1920,1200",
+    "--ignore-certificate-errors",
+    "--disable-extensions",
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--lang=vi"
+]
+for option in options:
+chrome_options.add_argument(option)
 
 class TestOk():
   def setup_method(self, method):
-    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
-    chrome_options = Options()
-    options = [
-        "--headless",
-        "--disable-gpu",
-        "--window-size=1920,1200",
-        "--ignore-certificate-errors",
-        "--disable-extensions",
-        "--no-sandbox",
-        "--disable-dev-shm-usage",
-        "--lang=vi"
-    ]
-    for option in options:
-    chrome_options.add_argument(option)
     self.driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
     self.vars = {}
   
