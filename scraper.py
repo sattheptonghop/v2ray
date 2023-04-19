@@ -45,7 +45,7 @@ username, domain = email.split('@')
 driver.get("https://trumvpn.pro/#/register")
 # Tìm phần tử với class là "tbclose-btn" và gọi hàm click() (nếu phần tử tồn tại)
 try:
-    driver.find_element_by_css_selector(".tbclose-btn").click()
+    driver.find_element("xpath", "//div[@onclick='dong24h()']").click()
     print('Đóng bảng thành công')
 except:
     print('Đóng bảng ko thành công')
