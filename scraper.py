@@ -40,7 +40,10 @@ email = driver.find_element("class name",'mailtext').get_attribute('value')
 username, domain = email.split('@')
 # Mở trang web trumvpn.pro
 driver.get("https://trumvpn.pro/#/register")
-driver.find_element(By.XPATH, "//div[@onclick=\'dong24h()\']").click()
+try:
+    driver.find_element(By.XPATH, "//div[@onclick=\'dong24h()\']").click()
+except:
+    pass
 #driver.find_element(By.CSS_SELECTOR, ".fa-plus").click()
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div/div/input").send_keys(username)
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
