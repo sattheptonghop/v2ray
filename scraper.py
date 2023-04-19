@@ -25,17 +25,16 @@ options = [
     "--disable-extensions",
     "--no-sandbox",
     "--disable-dev-shm-usage",
-    #"--lang=vi"
+    "--lang=vi"
 ]
 for option in options:
     chrome_options.add_argument(option)
-#driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
-
+    
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # Mở trang web 10minutemail.net
 driver.set_window_size(800, 1200)
 driver.get("https://10minutemail.net")
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 3)
 wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'mailtext')))
 email = driver.find_element("class name",'mailtext').get_attribute('value')
 username, domain = email.split('@')
@@ -57,6 +56,7 @@ except:
     driver.execute_script("arguments[0].click();", element)
     print ("andk=pa2")
     pass
+driver.implicitly_wait(3)
 print (driver.current_url)
 try:
     # 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
