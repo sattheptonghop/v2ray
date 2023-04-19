@@ -20,7 +20,7 @@ chrome_options = Options()
 options = [
     "--headless",
     "--disable-gpu",
-    "--window-size=900,1800",
+    "--window-size=900,2800",
     "--ignore-certificate-errors",
     "--disable-extensions",
     "--no-sandbox",
@@ -49,9 +49,9 @@ driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").click()
-driver.execute_script("window.scrollTo(0,0)")
-#loi {"method":"css selector","selector":"a > .text-center > div:nth-child(1)"}
+
 wait = WebDriverWait(driver, 10)
+driver.execute_script("window.scrollTo(0,0)")
 element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div[2]/div/div/div[2]/a/div/div")
 actions = ActionChains(driver)
 actions.move_to_element(element).perform()
