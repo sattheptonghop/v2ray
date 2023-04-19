@@ -51,12 +51,14 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").send_keys("\n")
 print("dk=ok")
-wait2 = WebDriverWait(driver, 10)
-wait2.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")))
-# 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
-element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
-actions = ActionChains(driver)
-actions.move_to_element(element).perform()
+try:
+    # 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
+    element = self.driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
+    actions = ActionChains(self.driver)
+    actions.move_to_element(element).perform()
+    print("ko co xpath=//h5[contains(.,'Hướng dẫn đăng ký nền tiktok Free 7 ngày')]")
+except:
+    pass
 # 15 | runScript | window.scrollTo(0,306) | 
 driver.execute_script("window.scrollTo(0,306)")
 # 16 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
