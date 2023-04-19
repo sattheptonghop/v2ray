@@ -20,7 +20,7 @@ chrome_options = Options()
 options = [
     "--headless",
     "--disable-gpu",
-    "--window-size=900,2800",
+    "--window-size=800,1200",
     "--ignore-certificate-errors",
     "--disable-extensions",
     "--no-sandbox",
@@ -33,6 +33,7 @@ for option in options:
 
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # Mở trang web 10minutemail.net
+driver.set_window_size(800, 1200)
 driver.get("https://10minutemail.net")
 wait = WebDriverWait(driver, 10)
 wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'mailtext')))
@@ -41,7 +42,7 @@ username, domain = email.split('@')
 # Mở trang web trumvpn.pro
 driver.get("https://trumvpn.pro/#/register")
 try:
-    driver.find_element(By.XPATH, "//div[@onclick=\'dong24h()\']").click()
+    driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
 except:
     pass
 #driver.find_element(By.CSS_SELECTOR, ".fa-plus").click()
@@ -51,18 +52,40 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").click()
 
 wait = WebDriverWait(driver, 10)
-driver.execute_script("window.scrollTo(0,0)")
-element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div[2]/div/div/div[2]/a/div/div")
+# 13 | mouseOver | css=.row:nth-child(1) .font-size-base | 
+element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
 actions = ActionChains(driver)
 actions.move_to_element(element).perform()
+# 14 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
 driver.find_element(By.LINK_TEXT, "Nhấp vào đây để đồng bộ máy chủ").click()
-element = driver.find_element(By.LINK_TEXT, "Nhấp vào đây để đồng bộ máy chủ")
+# 15 | runScript | window.scrollTo(0,306) | 
+driver.execute_script("window.scrollTo(0,306)")
+# 16 | click | linkText=Sao chép liên kết | 
+driver.find_element(By.LINK_TEXT, "Sao chép liên kết").click()
+# 17 | mouseOver | linkText=Sao chép liên kết | 
+element = driver.find_element(By.LINK_TEXT, "Sao chép liên kết")
 actions = ActionChains(driver)
 actions.move_to_element(element).perform()
+# 18 | mouseOut | linkText=Sao chép liên kết | 
 element = driver.find_element(By.CSS_SELECTOR, "body")
 actions = ActionChains(driver)
 actions.move_to_element(element, 0, 0).perform()
-driver.find_element(By.LINK_TEXT, "Sao chép liên kết").click()
+# 19 | mouseOver | css=.fa-angle-down | 
+element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
+actions = ActionChains(driver)
+actions.move_to_element(element).perform()
+# 20 | mouseOut | css=.fa-angle-down | 
+element = driver.find_element(By.CSS_SELECTOR, "body")
+actions = ActionChains(driver)
+actions.move_to_element(element, 0, 0).perform()
+# 21 | click | css=.ant-dropdown-open | 
+driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-open").click()
+# 22 | mouseOver | css=.ant-dropdown-trigger:nth-child(5) | 
+element = driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-trigger:nth-child(5)")
+actions = ActionChains(driver)
+actions.move_to_element(element).perform()
+# 23 | click | linkText=Đăng xuất | 
+driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
 # Tạo một bộ sưu tập dữ liệu trống để lưu trữ tiêu đề
 data = [['V2ray trumvpn.pro']]
