@@ -50,14 +50,10 @@ driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 try:
-    element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
-    driver.execute_script("arguments[0].scrollIntoView();", element)
-    driver.execute_script("arguments[0].click();", element)
+    driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").send_keys("\n")
     print("dk=pa1")
 except:
     element = driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button")
-    actions = ActionChains(driver)
-    actions.move_to_element(element).perform()
     driver.execute_script("arguments[0].scrollIntoView();", element)
     driver.execute_script("arguments[0].click();", element)
     print("dk=pa2")
@@ -65,7 +61,7 @@ except:
 
 wait = WebDriverWait(driver, 10)
 # 13 | mouseOver | css=.row:nth-child(1) .font-size-base | 
-element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
+element = driver.find_element(By.XPATH, "//div[@id='rc-tabs-0-panel-knowledge']/div/div/div/div[2]/a/h5")
 actions = ActionChains(driver)
 actions.move_to_element(element).perform()
 # 14 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
