@@ -67,7 +67,7 @@ print('pa1 pass 2 ok')
 
     
 # dang ky
-driver.find_element("css selector", ".btn-block, //div[2]/button").click()
+driver.find_element("css selector", ".btn-block, //button[@type='button'][3]").click()
 # Tìm phần tử button bằng nội dung và click vào nó
 driver.find_element("xpath", "//button[text()='Nhấp vào đây để đồng bộ máy chủ']").click()
 # Tìm phần tử button bằng nội dung và click vào nó
