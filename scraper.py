@@ -51,12 +51,12 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 try:
     driver.find_element(By.XPATH, "//div[2]/button").click()
-    Print("dk=pa1")
+    print("dk=pa1")
 except:
     element = driver.find_element(By.XPATH, "//div[2]/button")
     actions = ActionChains(driver)
     actions.move_to_element(element).perform()
-    Print("dk=pa2")
+    print("dk=pa2")
     pass
 
 wait = WebDriverWait(driver, 10)
