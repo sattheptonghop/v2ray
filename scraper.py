@@ -33,17 +33,16 @@ for option in options:
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
-driver.set_window_size(800, 1200)
+#driver.set_window_size(800, 1200)
 # 2 | open | https://trumvpn.pro/ | 
 driver.get("https://trumvpn.pro/#/register")
-# 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
-ticket = driver.execute_script("return Math.random(). toString(36).substring(2,12)")
 # 3 | click | css=.tbclose-btn | 
 try:
 	driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
 except:
 	pass
-
+# 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
+ticket = driver.execute_script("return Math.random(). toString(36).substring(2,8)")
 # 8 | type | css=.input-group > .form-control | ${ticket}
 driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(ticket)
 # 10 | type | css=.form-group:nth-child(2) > .form-control | 63668890
@@ -53,9 +52,15 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
 while driver.current_url == "https://trumvpn.pro/#/register":
 	driver.implicitly_wait(10)
-	element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
-	driver.execute_script("arguments[0].click();", element)
-	pass
+	try:
+		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+		element.scrollIntoView()
+		element.click()
+	except:
+		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+		driver.execute_script("arguments[0].scrollIntoView();", element)
+		driver.execute_script("arguments[0].click();", element)
+		pass
 
 # 15 | runScript | window.scrollTo(0,306) | 
 driver.execute_script("window.scrollTo(0,306)")
@@ -66,15 +71,15 @@ actions.move_to_element(element).perform()
 # 19 | click | linkText=Sao chép liên kết | 
 driver.find_element(By.LINK_TEXT, "Sao chép Subscription").click()
 # 20 | mouseOver | css=.fa-angle-down | 
-element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
-actions = ActionChains(driver)
-actions.move_to_element(element).perform()
+#element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
+#actions = ActionChains(driver)
+#actions.move_to_element(element).perform()
 # 21 | mouseOver | css=.ant-dropdown-trigger:nth-child(5) | 
-element = driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-trigger:nth-child(5)")
-actions = ActionChains(driver)
-actions.move_to_element(element).perform()
+#element = driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-trigger:nth-child(5)")
+#actions = ActionChains(driver)
+#actions.move_to_element(element).perform()
 # 22 | click | linkText=Đăng xuất | 
-driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
+#driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
 # Lấy giá trị từ bộ nhớ ra và gán vào biến result
 result = driver.execute_script("return window.getSelection().toString();")
