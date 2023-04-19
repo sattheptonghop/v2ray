@@ -52,7 +52,9 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
 driver.execute_script("arguments[0].click();", element)
 print (driver.current_url)
-driver.implicitly_wait(10)
+driver.execute_script("arguments[1].click();", element)
+print (driver.current_url)
+driver.execute_script("arguments[2].click();", element)
 print (driver.current_url)
 try:
     # 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
