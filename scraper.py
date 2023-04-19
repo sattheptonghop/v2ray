@@ -2,6 +2,7 @@ import csv
 import pytest
 import time
 import json
+import pyperclip
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
@@ -33,7 +34,7 @@ for option in options:
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
-#driver.set_window_size(800, 1200)
+driver.set_window_size(800, 1200)
 # 2 | open | https://trumvpn.pro/ | 
 driver.get("https://trumvpn.pro/#/register")
 # 3 | click | css=.tbclose-btn | 
@@ -63,13 +64,21 @@ while driver.current_url == "https://trumvpn.pro/#/register":
 		pass
 
 # 15 | runScript | window.scrollTo(0,306) | 
-driver.execute_script("window.scrollTo(0,306)")
 # 17 | mouseOver | linkText=Sao chép liên kết | 
 element = driver.find_element(By.LINK_TEXT, "Sao chép Subscription")
 actions = ActionChains(driver)
 actions.move_to_element(element).perform()
 # 19 | click | linkText=Sao chép liên kết | 
-driver.find_element(By.LINK_TEXT, "Sao chép Subscription").click()
+driver.execute_script("window.scrollTo(0,306)")
+try:
+	driver.find_element(By.LINK_TEXT, "Sao chép Subscription").click()
+except:
+	driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
+	driver.find_element(By.LINK_TEXT, "Sao chép Subscription").click()
+	pass
+# Lấy giá trị từ bộ nhớ ra và gán vào biến result
+result = pyperclip.paste()
+print(result)
 # 20 | mouseOver | css=.fa-angle-down | 
 #element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
 #actions = ActionChains(driver)
@@ -81,8 +90,6 @@ driver.find_element(By.LINK_TEXT, "Sao chép Subscription").click()
 # 22 | click | linkText=Đăng xuất | 
 #driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
-# Lấy giá trị từ bộ nhớ ra và gán vào biến result
-result = driver.execute_script("return window.getSelection().toString();")
 # Tạo một bộ sưu tập dữ liệu trống để lưu trữ tiêu đề
 data = [['V2ray trumvpn.pro']]
 # Thêm tiêu đề vào bộ sưu tập dữ liệu
