@@ -51,9 +51,9 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
 driver.execute_script("arguments[0].click();", element)
-print ("link=" driver.current_url)
+print (driver.current_url)
 driver.implicitly_wait(10)
-print ("link=" driver.current_url)
+print (driver.current_url)
 try:
     # 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
     element = self.driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
