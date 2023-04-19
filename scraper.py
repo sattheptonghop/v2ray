@@ -51,6 +51,7 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div[2]/button").send_keys("\n")
 print("dk=ok")
+print (driver.current_url)
 try:
     # 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
     element = self.driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
@@ -62,7 +63,21 @@ except:
 # 15 | runScript | window.scrollTo(0,306) | 
 driver.execute_script("window.scrollTo(0,306)")
 # 16 | click | linkText=Nhấp vào đây để đồng bộ máy chủ | 
-driver.find_element(By.XPATH, "//a[contains(text(),\'Nhấp vào đây để đồng bộ máy chủ\')]").click()
+try:
+    driver.find_element(By.XPATH, "//a[contains(.,'Nhấp vào đây để đồng bộ máy chủ')]").click()
+    print("getdk=1")
+except:
+    pass
+try:
+    driver.find_element(By.XPATH, "//div[2]/div/div[2]/a").click()
+    print("getdk=2")
+except:
+    pass
+try:
+    driver.find_element(By.XPATH, "//main[@id='main-container']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
+    print("getdk=3")
+except:
+    pass
 # 17 | mouseOver | linkText=Sao chép liên kết | 
 element = driver.find_element(By.LINK_TEXT, "Sao chép liên kết")
 actions = ActionChains(driver)
