@@ -93,17 +93,17 @@ except Exception as e:
 	pass
 try:
 	# 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
-	element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
-	actions = ActionChains(driver)
-	actions.move_to_element(element).perform()
+	##element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
+	##actions = ActionChains(driver)
+	##actions.move_to_element(element).perform()
 	# 15 | runScript | window.scrollTo(0,306) | 
-	driver.execute_script("window.scrollTo(0,306)")
+	##driver.execute_script("window.scrollTo(0,306)")
 	# 16 | click | xpath=//main[@id='main-container']/div/div[2]/div/div/div[2]/div/div[2]/a | 
-	driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
+	##driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
 	# 17 | mouseOver | linkText=Clash | 
-	element = driver.find_element(By.LINK_TEXT, "Clash")
-	actions = ActionChains(driver)
-	actions.move_to_element(element).perform()
+	element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash*")
+	##actions = ActionChains(driver)
+	##actions.move_to_element(element).perform()
 	# 18 | mouseOut | linkText=Clash | 
 	#element = driver.find_element(By.CSS_SELECTOR, "body")
 	#actions = ActionChains(driver)
