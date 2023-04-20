@@ -2,6 +2,10 @@ name: scrape
 on:
   push:
   workflow_dispatch:
+env:
+  DISPLAY: ${{ github.workspace }}/display
+  XAUTHORITY: ${{ github.workspace }}/xauth
+  RUNNER_TEMP: ${{ github.workspace }}/temp
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -20,6 +24,11 @@ jobs:
         run: sudo apt purge chromium-browser
       - name: Install a new Chromium
         run: sudo apt install -y chromium-browser xclip
+      - name: Activate graphical environment
+        run: |
+          Xvfb :1 &
+          export DISPLAY=:1.0
+          xauth generate $DISPLAY . trusted
       - name: Install all necessary packages
         run: |-
           pip install --upgrade pip
