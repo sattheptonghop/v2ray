@@ -133,9 +133,9 @@ except Exception as e:
 # 22 | click | linkText=Đăng xuất | 
 #driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
-# Kiểm tra xem hôm nay có phải là Chủ nhật hay không
+# Kiểm tra 
 today = datetime.datetime.now()
-if today.weekday() == 6 and today.hour >= 0 and today.hour < 4: # 6 là Chủ nhật trong Python
+if today.hour >= 0 and today.hour < 3:
     # Xóa tệp tin "vpn" nếu nó tồn tại
     if os.path.exists("vpn"):
         os.remove("vpn")
