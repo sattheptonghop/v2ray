@@ -44,7 +44,8 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://trumvpn.pro/ | 
-driver.get("https://trumvpn.pro/")
+#driver.get("https://trumvpn.pro/")
+driver.get("https://trumvpn.pro/#/register")
 # 3 | click | css=.tbclose-btn | 
 driver.implicitly_wait(10)
 try:
@@ -55,19 +56,14 @@ except:
 	pass
 	
 # 4 | click | linkText=Đăng ký | 
-try:
-	element = driver.find_element(By.LINK_TEXT, "Đăng ký")
-	element.click()
-	print('an dang ky')
-except:
-	pass
-driver.implicitly_wait(10)
-try:
-	element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
-	element.click()
-	print('dong thong bao')
-except:
-	pass
+#try:
+#	element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+#	element.click()
+#	print('an dang ky')
+#except:
+#	pass
+#driver.implicitly_wait(10)
+
 # 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
 ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
 # 8 | type | css=.input-group > .form-control | ${ticket}
