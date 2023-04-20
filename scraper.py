@@ -42,14 +42,26 @@ chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
-#driver.set_window_size(800, 1200)
+driver.set_window_size(360, 720)
 # 2 | open | https://trumvpn.pro/ | 
-driver.get("https://trumvpn.pro/#/register")
+driver.get("https://trumvpn.pro/")
 # 3 | click | css=.tbclose-btn | 
+driver.implicitly_wait(10)
 try:
-	driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
+	element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
+	element.click()
+	print('dong thong bao')
 except:
 	pass
+	
+# 4 | click | linkText=Đăng ký | 
+try:
+	element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+	element.click()
+	print('an dang ky')
+except:
+	pass
+
 # 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
 ticket = driver.execute_script("return Math.random(). toString(36).substring(2,8)")
 # 8 | type | css=.input-group > .form-control | ${ticket}
@@ -60,8 +72,7 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
 print('Đăng ký và đăng nhập')
-while driver.current_url == "https://trumvpn.pro/#/register" or driver.current_url == "https://trumvpn.pro/#/login":
-	driver.implicitly_wait(3)
+while driver.current_url != "https://trumvpn.pro/#/dashboard":
 	try:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 		element.location_once_scrolled_into_view
@@ -75,17 +86,14 @@ while driver.current_url == "https://trumvpn.pro/#/register" or driver.current_u
 		print('pa2')
 		print(driver.current_url)
 		pass
+	# 8 | type | css=.input-group > .form-control | ${ticket}
+	try:
+		driver.implicitly_wait(10)
+		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("1")
+	except:
+		pass
 print('Đăng ký và đăng nhập thành công')
-# 15 | runScript | window.scrollTo(0,306) | 
-# 17 | mouseOver | linkText=Sao chép liên kết | 
 
-#try:
-#	element = driver.find_element(By.LINK_TEXT, "Sao chép liên kết")
-#except NoSuchElementException:
-#	element = driver.find_element(By.LINK_TEXT, "Sao chép Subscription")
-#except Exception as e:
-#	print(e)
-#	pass
 try:
 	driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
 except Exception as e:
@@ -93,44 +101,23 @@ except Exception as e:
 	pass
 try:
 	# 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
-	##element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
-	##actions = ActionChains(driver)
-	##actions.move_to_element(element).perform()
+	element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
+	actions = ActionChains(driver)
+	actions.move_to_element(element).perform()
 	# 15 | runScript | window.scrollTo(0,306) | 
-	##driver.execute_script("window.scrollTo(0,306)")
+	driver.execute_script("window.scrollTo(0,306)")
 	# 16 | click | xpath=//main[@id='main-container']/div/div[2]/div/div/div[2]/div/div[2]/a | 
-	##driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
+	driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
 	# 17 | mouseOver | linkText=Clash | 
 	element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
-	##actions = ActionChains(driver)
-	##actions.move_to_element(element).perform()
-	# 18 | mouseOut | linkText=Clash | 
-	#element = driver.find_element(By.CSS_SELECTOR, "body")
-	#actions = ActionChains(driver)
-	#actions.move_to_element(element, 0, 0).perform()
-	# 19 | click | linkText=Clash | 
-	#driver.find_element(By.LINK_TEXT, "Clash").click()
 	url = element.get_attribute("href")
-	print("url clash")
-	print(url)
+	result = url.split("url=")[1].split("&name=")[0]
+	print("result=")
+	print(result)
 except Exception as e:
 	print(e)
 	pass
 
-# Lấy giá trị từ bộ nhớ ra và gán vào biến result
-#result = pyperclip.paste()
-response = requests.get(driver.current_url)
-soup = BeautifulSoup(response.content, 'html.parser')
-link = soup.find('a', href=lambda href: href and 'subscribe' in href)
-if link is not None:
-    href = link['href']
-    print(href)
-else:
-    print('Không tìm thấy liên kết.')
-match = re.search(r'url=(.+?)(&amp;|$)', link)
-if match:
-    result = match.group('url')
-print(result)
 # 20 | mouseOver | css=.fa-angle-down | 
 #element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
 #actions = ActionChains(driver)
