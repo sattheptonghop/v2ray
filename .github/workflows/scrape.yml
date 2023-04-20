@@ -28,7 +28,7 @@ jobs:
         run: |-
           pip install --upgrade pip
           pip install requests beautifulsoup4 pandas webdriver-manager selenium
-          pip install pytest pyperclip gtk
+          pip install pytest pyperclip
       - name: Run the scraping script
         run: |-
           python scraper.py
