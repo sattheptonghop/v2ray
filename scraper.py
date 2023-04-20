@@ -134,18 +134,22 @@ except Exception as e:
 #driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
 # Mở tệp CSV để ghi dữ liệu
-with open('vpn', mode='a', newline='') as file:
-	today = datetime.datetime.now()
-	if today.hour >= 0 and today.hour < 2:
-		reader = csv.reader(file)
-		writer = csv.writer(file)
-		rows = list(reader)
+today = datetime.datetime.now()
+if today.hour >= 0 and today.hour < 2:
+	# Mở tệp tin VPN sử dụng mode 'r+' để đọc và ghi
+	with open('vpn', mode='r+', newline='') as vpn_file:
+	    	reader = csv.reader(vpn_file)
+	    	rows = list(reader)
 		del rows[0:12]
-		file.seek(0)
-		writer.writerow(rows)
-		file.truncate()
-	writer = csv.writer(file)
+	    	vpn_file.seek(0) # Di chuyển con trỏ tập tin về đầu tệp tin
+	    	writer = csv.writer(vpn_file)
+	    	writer.writerows(rows)
+
+# Mở tệp tin VPN sử dụng mode 'a' để ghi lại kết quả mới
+with open('vpn', mode='a', newline='') as vpn_file:
+    	writer = csv.writer(vpn_file)
 	writer.writerow([result])
+	
 # Đóng trình duyệt web
 driver.close()
 driver.quit()
