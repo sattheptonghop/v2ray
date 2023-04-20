@@ -59,22 +59,23 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 # 12 | type | css=.form-group:nth-child(3) > .form-control | 63668890
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
-while driver.current_url == "https://trumvpn.pro/#/register":
+print('Đăng ký và đăng nhập')
+while driver.current_url == "https://trumvpn.pro/#/register" and driver.current_url == "https://trumvpn.pro/#/login":
 	driver.implicitly_wait(3)
 	try:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 		element.location_once_scrolled_into_view
 		element.click()
-		print('Đăng nhập thành công pa1')
+		print('pa1')
 		print(driver.current_url)
 	except:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 		driver.execute_script("arguments[0].scrollIntoView();", element)
 		driver.execute_script("arguments[0].click();", element)
-		print('Đăng nhập thành công pa2')
+		print('pa2')
 		print(driver.current_url)
 		pass
-
+print('Đăng ký và đăng nhập thành công')
 # 15 | runScript | window.scrollTo(0,306) | 
 # 17 | mouseOver | linkText=Sao chép liên kết | 
 
