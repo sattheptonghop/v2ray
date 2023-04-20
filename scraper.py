@@ -133,16 +133,19 @@ except Exception as e:
 # 22 | click | linkText=Đăng xuất | 
 #driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
-# Kiểm tra 
-today = datetime.datetime.now()
-if today.hour >= 0 and today.hour < 3:
-    # Xóa tệp tin "vpn" nếu nó tồn tại
-    if os.path.exists("vpn"):
-        os.remove("vpn")
 # Mở tệp CSV để ghi dữ liệu
 with open('vpn', mode='a', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow([result])
+	today = datetime.datetime.now()
+	if today.hour >= 0 and today.hour < 2:
+		reader = csv.reader(file)
+		writer = csv.writer(file)
+		rows = list(reader)
+		del rows[0:12]
+		file.seek(0)
+		writer.writerow(rows)
+		file.truncate()
+	writer = csv.writer(file)
+	writer.writerow([result])
 # Đóng trình duyệt web
 driver.close()
 driver.quit()
