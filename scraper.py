@@ -2,7 +2,9 @@ import csv
 import pytest
 import time
 import json
-import pyperclip
+import re
+import requests
+from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
@@ -77,7 +79,13 @@ except:
 	driver.find_element(By.LINK_TEXT, "Sao chép Subscription").click()
 	pass
 # Lấy giá trị từ bộ nhớ ra và gán vào biến result
-result = pyperclip.paste()
+#result = pyperclip.paste()
+response = requests.get(driver.current_url)
+soup = BeautifulSoup(response.content, 'html.parser')
+html = soup.find('a', href=lambda href: href and 'clash://install-config' in href)['href']
+match = re.search(r'(?P<url>https?://[^\s]+)', html)
+if match:
+    result = match.group('url')
 print(result)
 # 20 | mouseOver | css=.fa-angle-down | 
 #element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
