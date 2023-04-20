@@ -139,12 +139,10 @@ if today.weekday() == 6: # 6 là Chủ nhật trong Python
     # Xóa tệp tin "vpn" nếu nó tồn tại
     if os.path.exists("vpn"):
         os.remove("vpn")
-# Thêm tiêu đề vào bộ sưu tập dữ liệu
-data.append([result])
 # Mở tệp CSV để ghi dữ liệu
 with open('vpn', mode='a', newline='') as file:
     writer = csv.writer(file)
-    writer.writerows(data)
+    writer.writerows([result])
 # Đóng trình duyệt web
 driver.close()
 driver.quit()
