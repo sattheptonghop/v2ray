@@ -135,14 +135,14 @@ except Exception as e:
 
 # Kiểm tra xem hôm nay có phải là Chủ nhật hay không
 today = datetime.datetime.now()
-if today.weekday() == 6: # 6 là Chủ nhật trong Python
+if today.weekday() == 6 and today.hour >= 0 and today.hour < 4: # 6 là Chủ nhật trong Python
     # Xóa tệp tin "vpn" nếu nó tồn tại
     if os.path.exists("vpn"):
         os.remove("vpn")
 # Mở tệp CSV để ghi dữ liệu
 with open('vpn', mode='a', newline='') as file:
     writer = csv.writer(file)
-    writer.writerows([result])
+    writer.writerow([result])
 # Đóng trình duyệt web
 driver.close()
 driver.quit()
