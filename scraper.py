@@ -32,11 +32,17 @@ options = [
 ]
 for option in options:
     chrome_options.add_argument(option)
-    
+
+mobile_emulation = {
+    "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
+    #"userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
+    "userAgent": "Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36"
+}
+chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
-driver.set_window_size(800, 1200)
+#driver.set_window_size(800, 1200)
 # 2 | open | https://trumvpn.pro/ | 
 driver.get("https://trumvpn.pro/#/register")
 # 3 | click | css=.tbclose-btn | 
