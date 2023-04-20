@@ -101,7 +101,7 @@ try:
 	# 16 | click | xpath=//main[@id='main-container']/div/div[2]/div/div/div[2]/div/div[2]/a | 
 	##driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
 	# 17 | mouseOver | linkText=Clash | 
-	element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash*")
+	element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
 	##actions = ActionChains(driver)
 	##actions.move_to_element(element).perform()
 	# 18 | mouseOut | linkText=Clash | 
