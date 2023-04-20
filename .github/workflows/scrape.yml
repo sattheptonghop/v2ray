@@ -2,6 +2,8 @@ name: scrape
 on:
   push:
   workflow_dispatch:
+  schedule:
+    - cron: "0 */3 * * *"
 env:
   DISPLAY: ${{ github.workspace }}/display
   XAUTHORITY: ${{ github.workspace }}/xauth
