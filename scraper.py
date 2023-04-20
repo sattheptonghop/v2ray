@@ -77,18 +77,18 @@ while driver.current_url == "https://trumvpn.pro/#/register":
 # 19 | click | linkText=Sao chép liên kết | 
 driver.execute_script("window.scrollTo(0,306)")
 
-try:
-	element = driver.find_element(By.LINK_TEXT, "Sao chép liên kết")
-except NoSuchElementException:
-	element = driver.find_element(By.LINK_TEXT, "Sao chép Subscription")
-except Exception as e:
-	print(e)
-	pass
+#try:
+#	element = driver.find_element(By.LINK_TEXT, "Sao chép liên kết")
+#except NoSuchElementException:
+#	element = driver.find_element(By.LINK_TEXT, "Sao chép Subscription")
+#except Exception as e:
+#	print(e)
+#	pass
 try:
 	driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
-	actions = ActionChains(driver)
-	actions.move_to_element(element).perform()
-	element.click()
+	#actions = ActionChains(driver)
+	#actions.move_to_element(element).perform()
+	#element.click()
 except Exception as e:
 	print(e)
 	pass
