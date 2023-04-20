@@ -82,7 +82,7 @@ except:
 #result = pyperclip.paste()
 response = requests.get(driver.current_url)
 soup = BeautifulSoup(response.content, 'html.parser')
-link = soup.find('a', href=lambda href: href and 'install-config' in href)
+link = soup.find('a', href=lambda href: href and 'subscribe' in href)
 if link is not None:
     href = link['href']
     print(href)
