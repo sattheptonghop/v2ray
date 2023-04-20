@@ -61,9 +61,15 @@ try:
 	print('an dang ky')
 except:
 	pass
-
+driver.implicitly_wait(10)
+try:
+	element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
+	element.click()
+	print('dong thong bao')
+except:
+	pass
 # 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
-ticket = driver.execute_script("return Math.random(). toString(36).substring(2,8)")
+ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
 # 8 | type | css=.input-group > .form-control | ${ticket}
 driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(ticket)
 # 10 | type | css=.form-group:nth-child(2) > .form-control | 63668890
