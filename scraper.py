@@ -1,3 +1,5 @@
+import os
+import datetime
 import csv
 import pytest
 import time
@@ -131,12 +133,16 @@ except Exception as e:
 # 22 | click | linkText=Đăng xuất | 
 #driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
-# Tạo một bộ sưu tập dữ liệu trống để lưu trữ tiêu đề
-data = [['V2ray trumvpn.pro']]
+# Kiểm tra xem hôm nay có phải là Chủ nhật hay không
+today = datetime.datetime.now()
+if today.weekday() == 6: # 6 là Chủ nhật trong Python
+    # Xóa tệp tin "vpn" nếu nó tồn tại
+    if os.path.exists("vpn"):
+        os.remove("vpn")
 # Thêm tiêu đề vào bộ sưu tập dữ liệu
 data.append([result])
 # Mở tệp CSV để ghi dữ liệu
-with open('google_title.csv', mode='w', newline='') as file:
+with open('vpn', mode='a', newline='') as file:
     writer = csv.writer(file)
     writer.writerows(data)
 # Đóng trình duyệt web
