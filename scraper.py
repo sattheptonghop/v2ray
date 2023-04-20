@@ -79,10 +79,9 @@ actions.move_to_element(element).perform()
 # 19 | click | linkText=Sao chép liên kết | 
 driver.execute_script("window.scrollTo(0,306)")
 try:
-	driver.find_element(By.LINK_TEXT, "Sao chép Subscription").click()
-except:
 	driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
 	driver.find_element(By.LINK_TEXT, "Sao chép Subscription").click()
+except:
 	pass
 # Lấy giá trị từ bộ nhớ ra và gán vào biến result
 #result = pyperclip.paste()
