@@ -20,14 +20,16 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 chrome_options = Options()
-	   #"--headless",
-	   #"--window-size=800,1200",
 options = [
-    "--disable-gpu",
-    "--ignore-certificate-errors",
-    "--disable-extensions",
-    "--no-sandbox",
-    "--disable-dev-shm-usage"
+	"--headless",
+	"--window-size=800,1200",
+	"start-maximized",
+	"disable-infobars",
+	"--disable-gpu",
+	"--ignore-certificate-errors",
+	"--disable-extensions",
+	"--no-sandbox",
+	"--disable-dev-shm-usage"
 ]
 for option in options:
     chrome_options.add_argument(option)
