@@ -60,7 +60,7 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
 print('Đăng ký và đăng nhập')
-while driver.current_url == "https://trumvpn.pro/#/register" and driver.current_url == "https://trumvpn.pro/#/login":
+while driver.current_url == "https://trumvpn.pro/#/register" or driver.current_url == "https://trumvpn.pro/#/login":
 	driver.implicitly_wait(3)
 	try:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
