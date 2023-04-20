@@ -20,22 +20,20 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 chrome_options = Options()
+	   #"--headless",
+	   #"--window-size=800,1200",
 options = [
-    #"--headless",
     "--disable-gpu",
-    "--window-size=800,1200",
     "--ignore-certificate-errors",
     "--disable-extensions",
     "--no-sandbox",
-    "--disable-dev-shm-usage",
-    "--lang=vi"
+    "--disable-dev-shm-usage"
 ]
 for option in options:
     chrome_options.add_argument(option)
 
 mobile_emulation = {
     "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
-    #"userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
     "userAgent": "Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36"
 }
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
