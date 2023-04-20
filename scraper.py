@@ -82,8 +82,13 @@ except:
 #result = pyperclip.paste()
 response = requests.get(driver.current_url)
 soup = BeautifulSoup(response.content, 'html.parser')
-html = soup.find('a', href=lambda href: href and 'clash://install-config' in href)['href']
-match = re.search(r'(?P<url>https?://[^\s]+)', html)
+link = soup.find('a', href=lambda href: href and 'install-config' in href)
+if link is not None:
+    href = link['href']
+    print(href)
+else:
+    print('Không tìm thấy liên kết.')
+match = re.search(r'url=(.+?)(&amp;|$)', link)
 if match:
     result = match.group('url')
 print(result)
