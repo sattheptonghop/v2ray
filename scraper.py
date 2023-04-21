@@ -139,10 +139,10 @@ today = datetime.datetime.now()
 with open('vpn', mode='r+', newline='') as vpn_file:
     reader = csv.reader(vpn_file)
     rows = list(reader)
-    del rows[1:2]
-    vpn_file.seek(1) # Di chuyển con trỏ tập tin về đầu tệp tin
+    del rows[0:1]
+    vpn_file.seek(0) # Di chuyển con trỏ tập tin về đầu tệp tin
     writer = csv.writer(vpn_file)
-    writer.writerow(rows)
+    writer.writerows(rows)
 
 # Mở tệp tin VPN sử dụng mode 'a' để ghi lại kết quả mới
 with open('vpn', mode='a', newline='') as vpn_file:
