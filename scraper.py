@@ -120,17 +120,16 @@ try:
 except Exception as e:
 	print(e)
 	pass
-
-# 20 | mouseOver | css=.fa-angle-down | 
-element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
-actions = ActionChains(driver)
-actions.move_to_element(element).perform()
-# 21 | mouseOver | css=.ant-dropdown-trigger:nth-child(5) | 
-element = driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-trigger:nth-child(5)")
-actions = ActionChains(driver)
-actions.move_to_element(element).perform()
-# 22 | click | linkText=Đăng xuất | 
-driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
+try:
+	# 20 | mouseOver | css=.fa-angle-down | 
+	element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
+	actions = ActionChains(driver)
+	actions.move_to_element(element).perform()
+	# 22 | click | linkText=Đăng xuất | 
+	driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
+except Exception as e:
+	print(e)
+	pass
 
 # Mở tệp CSV để ghi dữ liệu
 today = datetime.datetime.now()
