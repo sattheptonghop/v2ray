@@ -77,12 +77,11 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 print('Đăng ký và đăng nhập')
 while driver.current_url != "https://trumvpn.pro/#/dashboard":
 	try:
-		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
-		element.location_once_scrolled_into_view
-		element.click()
-		print('pa1')
-		print(driver.current_url)
-	except NoSuchElementException:
+		#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+		#element.location_once_scrolled_into_view
+		#element.click()
+		#print('pa1')
+		#print(driver.current_url)
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 		driver.execute_script("arguments[0].scrollIntoView();", element)
 		driver.execute_script("arguments[0].click();", element)
