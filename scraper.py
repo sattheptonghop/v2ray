@@ -1,7 +1,6 @@
 import os
 import datetime
 import csv
-import pytest
 import time
 import json
 import re
@@ -123,15 +122,15 @@ except Exception as e:
 	pass
 
 # 20 | mouseOver | css=.fa-angle-down | 
-#element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
-#actions = ActionChains(driver)
-#actions.move_to_element(element).perform()
+element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
+actions = ActionChains(driver)
+actions.move_to_element(element).perform()
 # 21 | mouseOver | css=.ant-dropdown-trigger:nth-child(5) | 
-#element = driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-trigger:nth-child(5)")
-#actions = ActionChains(driver)
-#actions.move_to_element(element).perform()
+element = driver.find_element(By.CSS_SELECTOR, ".ant-dropdown-trigger:nth-child(5)")
+actions = ActionChains(driver)
+actions.move_to_element(element).perform()
 # 22 | click | linkText=Đăng xuất | 
-#driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
+driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 
 # Mở tệp CSV để ghi dữ liệu
 today = datetime.datetime.now()
