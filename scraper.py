@@ -77,23 +77,24 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 print('Đăng ký và đăng nhập')
 while driver.current_url != "https://trumvpn.pro/#/dashboard":
 	try:
-		#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
-		#element.location_once_scrolled_into_view
-		#element.click()
-		#print('pa1')
-		#print(driver.current_url)
+		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+		element.location_once_scrolled_into_view
+		element.click()
+		print('pa1')
+		print(driver.current_url)
+	except:	
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 		driver.execute_script("arguments[0].scrollIntoView();", element)
 		driver.execute_script("arguments[0].click();", element)
 		print('pa2')
 		print(driver.current_url)
-	except:	
                 pass
 	# 8 | type | css=.input-group > .form-control | ${ticket}
 	try:
 		driver.implicitly_wait(10)
 		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("1")
-	except:
+	except Exception as e:
+		print(e)
 		pass
 print('Đăng ký và đăng nhập thành công')
 
@@ -102,6 +103,8 @@ try:
 except Exception as e:
 	print(e)
 	pass
+
+print('Lấy link clash')
 try:
 	# 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
 	element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
@@ -117,10 +120,29 @@ try:
 	result = url.split("url=")[1].split("&name=")[0]
 	print("result=")
 	print(result)
+	
+	# Mở tệp CSV để ghi dữ liệu
+	today = datetime.datetime.now()
+	#if today.hour >= 0 and today.hour < 2:
+	    # Mở tệp tin VPN sử dụng mode 'r+' để đọc và ghi
+	with open('vpn', mode='r+', newline='') as vpn_file:
+	    reader = csv.reader(vpn_file)
+	    rows = list(reader)
+	    del rows[0:1]
+	    vpn_file.seek(0) # Di chuyển con trỏ tập tin về đầu tệp tin
+	    writer = csv.writer(vpn_file)
+	    writer.writerows(rows)
+
+	# Mở tệp tin VPN sử dụng mode 'a' để ghi lại kết quả mới
+	with open('vpn', mode='a', newline='') as vpn_file:
+	    writer = csv.writer(vpn_file)
+	    writer.writerow([result])
 except Exception as e:
 	print(e)
 	pass
+print('Xong Lấy link clash')
 try:
+	print('Thử đăng xuất')
 	# 20 | mouseOver | css=.fa-angle-down | 
 	element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
 	actions = ActionChains(driver)
@@ -128,25 +150,9 @@ try:
 	# 22 | click | linkText=Đăng xuất | 
 	driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 except Exception as e:
+	print('Thất bại đăng xuất')
 	print(e)
 	pass
-
-# Mở tệp CSV để ghi dữ liệu
-today = datetime.datetime.now()
-#if today.hour >= 0 and today.hour < 2:
-    # Mở tệp tin VPN sử dụng mode 'r+' để đọc và ghi
-with open('vpn', mode='r+', newline='') as vpn_file:
-    reader = csv.reader(vpn_file)
-    rows = list(reader)
-    del rows[0:1]
-    vpn_file.seek(0) # Di chuyển con trỏ tập tin về đầu tệp tin
-    writer = csv.writer(vpn_file)
-    writer.writerows(rows)
-
-# Mở tệp tin VPN sử dụng mode 'a' để ghi lại kết quả mới
-with open('vpn', mode='a', newline='') as vpn_file:
-    writer = csv.writer(vpn_file)
-    writer.writerow([result])
 	
 # Đóng trình duyệt web
 driver.close()
