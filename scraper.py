@@ -88,7 +88,7 @@ while driver.current_url != "https://trumvpn.pro/#/dashboard":
 		driver.execute_script("arguments[0].click();", element)
 		print('pa2')
 		print(driver.current_url)
-                pass
+		pass
 	# 8 | type | css=.input-group > .form-control | ${ticket}
 	try:
 		driver.implicitly_wait(10)
