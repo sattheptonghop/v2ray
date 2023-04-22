@@ -128,7 +128,7 @@ try:
 	with open('vpn', mode='r', newline='') as vpn_file:
 		reader = csv.reader(vpn_file)
 		rows = list(reader)
-		countrow = len(vpn_file.readlines())
+		countrow = len(rows)
 		print("countrow=", countrow)
 		#rows.append('\n') # Thêm ký tự xuống dòng vào cuối danh sách
 		#vpn_file.seek(0) # Di chuyển con trỏ tập tin về đầu tệp tin
