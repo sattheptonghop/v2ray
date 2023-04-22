@@ -129,7 +129,7 @@ try:
 		reader = csv.reader(vpn_file)
 		rows = list(reader)
 		countrow = len(vpn_file.readlines())
-		#del rows[0:1]
+		print("countrow=", countrow)
 		#rows.append('\n') # Thêm ký tự xuống dòng vào cuối danh sách
 		#vpn_file.seek(0) # Di chuyển con trỏ tập tin về đầu tệp tin
 		#writer = csv.writer(vpn_file)
@@ -142,9 +142,11 @@ try:
 	with open('vpn', 'w', newline='') as file:
 		writer = csv.writer(file)
 		if countrow > 12:
+			print("số dòng hơn 12")
 			for row in rows[1:]:
 				writer.writerow(row)
 		else:
+			print("số dòng ít hơn 12")
 			for row in rows:
 				writer.writerow(row)
 		writer.writerow([result])
