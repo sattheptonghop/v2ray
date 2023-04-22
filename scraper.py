@@ -125,7 +125,7 @@ try:
 	today = datetime.datetime.now()
 	#if today.hour >= 0 and today.hour < 2:
 	    # Mở tệp tin VPN sử dụng mode 'r+' để đọc và ghi
-	with open('vpn', mode='r+', newline='') as vpn_file:
+	with open('vpn', mode='r', newline='') as vpn_file:
 		reader = csv.reader(vpn_file)
 		rows = list(reader)
 		countrow = len(vpn_file.readlines())
