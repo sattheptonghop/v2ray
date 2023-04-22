@@ -82,7 +82,7 @@ while driver.current_url != "https://trumvpn.pro/#/dashboard":
 		element.click()
 		print('pa1')
 		print(driver.current_url)
-	except:	
+	except:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 		driver.execute_script("arguments[0].scrollIntoView();", element)
 		driver.execute_script("arguments[0].click();", element)
