@@ -128,7 +128,7 @@ try:
 	with open('vpn', mode='r+', newline='') as vpn_file:
 		reader = csv.reader(vpn_file)
 		rows = list(reader)
-		del rows[0:1]
+		#del rows[0:1]
 		#rows.append('\n') # Thêm ký tự xuống dòng vào cuối danh sách
 		#vpn_file.seek(0) # Di chuyển con trỏ tập tin về đầu tệp tin
 		#writer = csv.writer(vpn_file)
@@ -140,7 +140,8 @@ try:
 	# Ghi file mới với nội dung đã chỉnh sửa
 	with open('vpn', 'w', newline='') as file:
 		writer = csv.writer(file)
-		writer.writerow(rows)
+		for row in rows[1:]:
+			writer.writerow(row)
 		writer.writerow([result])
 	# Mở tệp tin VPN sử dụng mode 'a' để ghi lại kết quả mới
 	#with open('vpn', mode='a', newline='') as vpn_file:
