@@ -136,7 +136,7 @@ try:
 		#writer.writerows(rows)
 		#vpn_file.flush()
 	# Xoá file cũ
-	os.remove('vpn')
+	#os.remove('vpn')
 
 	# Ghi file mới với nội dung đã chỉnh sửa
 	with open('vpn', 'w', newline='') as file:
