@@ -140,11 +140,12 @@ try:
 	# Ghi file mới với nội dung đã chỉnh sửa
 	with open('vpn', 'w', newline='') as file:
 		writer = csv.writer(file)
-		if len(file.readlines())>12:
+		countrow = len(file.readlines())
+		if countrow > 12:
 			for row in rows[1:]:
 				writer.writerow(row)
 		else:
-			for row in rows[0:]:
+			for row in rows:
 				writer.writerow(row)
 		writer.writerow([result])
 	# Mở tệp tin VPN sử dụng mode 'a' để ghi lại kết quả mới
