@@ -141,7 +141,7 @@ try:
 	# Ghi file mới với nội dung đã chỉnh sửa
 	with open('vpn', 'w', newline='') as file:
 		writer = csv.writer(file)
-		if countrow > 12:
+		if countrow >= 11:
 			print("số dòng hơn 12")
 			for row in rows[1:]:
 				writer.writerow(row)
