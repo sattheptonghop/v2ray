@@ -78,13 +78,13 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 print('Đăng ký và đăng nhập')
 while driver.current_url != "https://tltvpn.com/#/dashboard":
 	try:
-		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[1]")
+		element = driver.find_element(By.XPATH, "//div[2]/button")
 		element.location_once_scrolled_into_view
 		element.click()
 		print('pa1 dang ky')
 		print(driver.current_url)
 	except:
-		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[2]")
+		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 		driver.execute_script("arguments[0].scrollIntoView();", element)
 		driver.execute_script("arguments[0].click();", element)
 		print('pa2 dang ky')
