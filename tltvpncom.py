@@ -22,7 +22,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 chrome_options = Options()
 options = [
-	#"--headless",
+	"--headless",
 	"--window-size=800,1200",
 	"start-maximized",
 	"disable-infobars",
@@ -107,80 +107,64 @@ while driver.current_url != "https://tnetz.pro/#/dashboard":
 	if iLoop == 100:
 		iLoop = iLoop + 1
 		break
-print('Đăng ký và đăng nhập thành công')
+if driver.current_url == "https://tnetz.pro/#/dashboard":
+	print('Đăng ký và đăng nhập thành công')
 
-try:
-	driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
-except Exception as e:
-	print(e)
-	pass
+	try:
+		driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
+	except Exception as e:
+		print(e)
+		pass
 
-print('Lấy link clash')
-try:
-	# 14 | mouseOver | css=.row:nth-child(1) .font-size-base | 
-	element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
-	actions = ActionChains(driver)
-	actions.move_to_element(element).perform()
-	# 15 | runScript | window.scrollTo(0,306) | 
-	driver.execute_script("window.scrollTo(0,306)")
-	# 16 | click | xpath=//main[@id='main-container']/div/div[2]/div/div/div[2]/div/div[2]/a | 
-	driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
-	# 17 | mouseOver | linkText=Clash | 
-	element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
-	url = element.get_attribute("href")
-	result = url.split("url=")[1].split("&name=")[0]
-	print("result=")
-	print(result)
-	
-	# Mở tệp CSV để ghi dữ liệu
-	today = datetime.datetime.now()
-	#if today.hour >= 0 and today.hour < 2:
-	    # Mở tệp tin VPN sử dụng mode 'r+' để đọc và ghi
-	with open('tltvpncom', mode='r', newline='') as vpn_file:
-		reader = csv.reader(vpn_file)
-		rows = list(reader)
-		countrow = len(rows)
-		print("countrow=", countrow)
-		#rows.append('\n') # Thêm ký tự xuống dòng vào cuối danh sách
-		#vpn_file.seek(0) # Di chuyển con trỏ tập tin về đầu tệp tin
-		#writer = csv.writer(vpn_file)
-		#writer.writerows(rows)
-		#vpn_file.flush()
-	# Xoá file cũ
-	#os.remove('vpn')
+	print('Lấy link clash')
+	try:
+		element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
+		actions = ActionChains(driver)
+		actions.move_to_element(element).perform()
+		driver.execute_script("window.scrollTo(0,306)")
+		driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
+		element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
+		url = element.get_attribute("href")
+		result = url.split("url=")[1].split("&name=")[0]
+		print("result=")
+		print(result)
+		
+		# Mở tệp CSV để ghi dữ liệu
+		today = datetime.datetime.now()
+		with open('tltvpncom', mode='r', newline='') as vpn_file:
+			reader = csv.reader(vpn_file)
+			rows = list(reader)
+			countrow = len(rows)
+			print("countrow=", countrow)
 
-	# Ghi file mới với nội dung đã chỉnh sửa
-	with open('tltvpncom', 'w', newline='') as file:
-		writer = csv.writer(file)
-		if countrow >= 24:
-			print("số dòng hơn 24")
-			for row in rows[1:]:
-				writer.writerow(row)
-		else:
-			print("số dòng ít hơn 24")
-			for row in rows:
-				writer.writerow(row)
-		writer.writerow([result])
-	# Mở tệp tin VPN sử dụng mode 'a' để ghi lại kết quả mới
-	#with open('vpn', mode='a', newline='') as vpn_file:
-	#	writer = csv.writer(vpn_file)
-	#	writer.writerow([result])
-except Exception as e:
-	print(e)
-	pass
-print('Xong Lấy link clash')
-try:
-	print('Thử đăng xuất')
-	# 20 | mouseOver | css=.fa-angle-down | 
-	element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
-	actions = ActionChains(driver)
-	actions.move_to_element(element).perform()
-	# 22 | click | linkText=Đăng xuất | 
-	driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
-except Exception as e:
-	print('Thất bại đăng xuất')
-	print(e)
-	pass
+		# Ghi file mới với nội dung đã chỉnh sửa
+		with open('tltvpncom', 'w', newline='') as file:
+			writer = csv.writer(file)
+			if countrow >= 24:
+				print("số dòng hơn 24")
+				for row in rows[1:]:
+					writer.writerow(row)
+			else:
+				print("số dòng ít hơn 24")
+				for row in rows:
+					writer.writerow(row)
+			writer.writerow([result])
+	except Exception as e:
+		print(e)
+		pass
+	print('Xong Lấy link clash')
+	try:
+		print('Thử đăng xuất')
+		# 20 | mouseOver | css=.fa-angle-down | 
+		element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
+		actions = ActionChains(driver)
+		actions.move_to_element(element).perform()
+		# 22 | click | linkText=Đăng xuất | 
+		driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
+	except Exception as e:
+		print('Thất bại đăng xuất')
+		print(e)
+		pass
 	
 # Đóng trình duyệt web
 driver.close()
