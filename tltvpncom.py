@@ -5,6 +5,7 @@ import time
 import json
 import re
 import requests
+from urllib.parse import urlparse
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
@@ -53,13 +54,15 @@ try:
 except:
 	pass
 	
-iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
-ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+iemail = driver.find_element(By.XPATH, "//input[@placeholder='Email']")
+#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+ipass1 = driver.find_element(By.XPATH, "(//input[@type=\'password\'])")
 ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 iLoop = 0
-while driver.current_url != "https://tnetz.pro/#/dashboard":
+while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 	# 4 | click | linkText=Đăng ký | 
-	if driver.current_url != "https://tnetz.pro/#/login":
+	if re.search(r"/#/(.*)",driver.current_url).group(1) != "login":
 		try:
 			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
 			element.click()
@@ -68,13 +71,7 @@ while driver.current_url != "https://tnetz.pro/#/dashboard":
 			print('ko an duoc nut dang ky')
 			pass
 		#driver.implicitly_wait(3)
-	if driver.current_url == "https://tnetz.pro/#/register":
-		if iemail.is_displayed():
-			# Get the element's value attribute
-			value = iemail.get_attribute("value")
-			print("Value: ", value)
-		else:
-			print("Element is not visible")
+	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
 		if iemail.get_attribute("value"):
 			print('sua lai email')
 			for i in range(10):
@@ -106,7 +103,7 @@ while driver.current_url != "https://tnetz.pro/#/dashboard":
 	if iLoop == 15:
 		iLoop = iLoop + 1
 		break
-if driver.current_url == "https://tnetz.pro/#/dashboard":
+if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	print('Trang quan tri dashboard')
 
 	try:
@@ -162,7 +159,7 @@ if driver.current_url == "https://tnetz.pro/#/dashboard":
 		#driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 	except Exception as e:
 		print('Thất bại đăng xuất')
-		print(e)
+		#print(e)
 		pass
 	
 # Đóng trình duyệt web
