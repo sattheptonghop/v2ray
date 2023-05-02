@@ -51,17 +51,22 @@ driver.implicitly_wait(10)
 try:
 	element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
 	element.click()
-	print('dong thong bao')
 except:
+	element = driver.find_element(By.CSS_SELECTOR, ".d-sm-none")
+	element.click()
 	pass
-	
+print('dong thong bao')
+print(driver.current_url)
 # 4 | click | linkText=Đăng ký | 
 try:
-	element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+	element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
 	element.click()
-	print('an dang ky')
 except:
+	element = driver.find_element(By.XPATH, "//a[contains(text(),'Đăng ký')]")
+	driver.execute_script("arguments[0].click();", element)
 	pass
+print('an dang ky')
+print(driver.current_url)
 driver.implicitly_wait(10)
 
 # 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
