@@ -77,7 +77,7 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 print('Đăng ký và đăng nhập')
 #while driver.current_url != "https://tnetz.pro/#/dashboard":
 iDK = 0
-while iDK < 10:
+while iDK < 3:
 	iDK = iDK + 1
 	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
