@@ -68,7 +68,8 @@ except:
 # 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
 ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
 # 8 | type | css=.input-group > .form-control | ${ticket}
-driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(self.vars["ticket"]@gmail.com)
+driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(ticket)
+driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("@gmail.com")
 # 10 | type | css=.form-group:nth-child(2) > .form-control | 63668890
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
 # 12 | type | css=.form-group:nth-child(3) > .form-control | 63668890
@@ -77,16 +78,16 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 print('Đăng ký và đăng nhập')
 while driver.current_url != "https://tltvpn.com/#/dashboard":
 	try:
-		element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
+		element = driver.find_element(By.LINK_TEXT, "Đăng ký")
 		element.location_once_scrolled_into_view
 		element.click()
-		print('pa1')
+		print('pa1 dang ky')
 		print(driver.current_url)
 	except:
-		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+		element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
 		driver.execute_script("arguments[0].scrollIntoView();", element)
 		driver.execute_script("arguments[0].click();", element)
-		print('pa2')
+		print('pa2 dang ky')
 		print(driver.current_url)
 		pass
 	# 8 | type | css=.input-group > .form-control | ${ticket}
