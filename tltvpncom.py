@@ -77,12 +77,17 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 print('Đăng ký và đăng nhập')
 while driver.current_url != "https://tnetz.pro/#/dashboard":
 	try:
-		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[2]")
+		element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
 		element.location_once_scrolled_into_view
 		element.click()
 		print('pa1 dang ky')
 		print(driver.current_url)
 	except:
+		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[2]")
+		element.location_once_scrolled_into_view
+		element.click()
+		print('pa2 dang ky')
+		print(driver.current_url)
 		pass
 	# 8 | type | css=.input-group > .form-control | ${ticket}
 	try:
