@@ -94,7 +94,7 @@ while driver.current_url != "https://tltvpn.com/#/dashboard":
 	try:
 		driver.implicitly_wait(10)
 		for i in range(10):
-		    email_input.send_keys(Keys.BACKSPACE)
+		    driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(Keys.BACKSPACE)
 		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("1")
 		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("@gmail.com")
 	except Exception as e:
