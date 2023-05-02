@@ -45,18 +45,16 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
 driver.get("https://tnetz.pro/#/login")
-# 3 | click | css=.tbclose-btn | 
-driver.implicitly_wait(3)
-try:
-	element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
-	element.click()
-	print('dong thong bao')
-except:
-	pass
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
 while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
+	try:
+		element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
+		element.click()
+		print('dong thong bao')
+	except:
+		pass
 	# 4 | click | linkText=Đăng ký | 
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
 		print('Thu chuyen toi trang dang ky')
@@ -80,13 +78,15 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				#iemail.send_keys(Keys.BACKSPACE)
 				#time.sleep(1)
 				#pass
-			oemail = iemail.get_attribute("value")
-			iemail.clear()
-			print(oemail)
-			iemail.send_keys(oemail.split("@")[0])
-			iemail.send_keys("1")
-			iemail.send_keys("@gmail.com")
-			#iemail.send_keys(oemail.split("@")[1])
+			try:
+				oemail = iemail.get_attribute("value")
+				iemail.clear()
+				iemail.send_keys(oemail.split("@")[0])
+				iemail.send_keys("1")
+				iemail.send_keys("@gmail.com")
+				#iemail.send_keys(oemail.split("@")[1])
+			except:
+				pass
 		else:
 			
 			print('Đăng ký và đăng nhập')
