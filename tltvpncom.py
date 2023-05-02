@@ -76,6 +76,7 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
 print('Đăng ký và đăng nhập')
 #while driver.current_url != "https://tnetz.pro/#/dashboard":
+iDK = 0
 while iDK < 10:
 	iDK = iDK + 1
 	try:
@@ -96,7 +97,8 @@ while iDK < 10:
 		driver.implicitly_wait(60)
 		for i in range(10):
 		    driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(Keys.BACKSPACE)
-		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("1")
+		newt = driver.execute_script("return Math.random(). toString(36).substring(1,1)")
+		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(newt)
 		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("@gmail.com")
 	except Exception as e:
 		print(e)
