@@ -58,13 +58,13 @@ except:
 print('dong thong bao')
 print(driver.current_url)
 # 4 | click | linkText=Đăng ký | 
-try:
-	element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
-	driver.execute_script("arguments[0].click();", element)
-except:
-	element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
-	element.click()
-	pass
+#try:
+#	element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
+#	driver.execute_script("arguments[0].click();", element)
+#except:
+#	element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
+#	element.click()
+#	pass
 print('an dang ky')
 print(driver.current_url)
 driver.implicitly_wait(10)
