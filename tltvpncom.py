@@ -102,8 +102,8 @@ while iDK < 3:
 		driver.implicitly_wait(60)
 		for i in range(10):
 		    driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(Keys.BACKSPACE)
-		newt = driver.execute_script("return Math.random(). toString(36).substring(1,1)")
-		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys(newt)
+		#newt = driver.execute_script("return Math.random(). toString(36).substring(1,1)")
+		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("1")
 		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("@gmail.com")
 	except Exception as e:
 		print(e)
