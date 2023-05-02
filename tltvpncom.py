@@ -65,8 +65,9 @@ while driver.current_url != "https://tnetz.pro/#/dashboard":
 			element.click()
 			print('an dang ky')
 		except:
+			print('ko an duoc nut dang ky')
 			pass
-		driver.implicitly_wait(10)
+		#driver.implicitly_wait(3)
 	if driver.current_url == "https://tnetz.pro/#/register":
 		if iemail.is_displayed():
 			# Get the element's value attribute
