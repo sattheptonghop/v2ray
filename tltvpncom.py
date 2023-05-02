@@ -118,7 +118,8 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	print('Trang quan tri dashboard')
 
 	try:
-		driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
+		WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".tbclose-btn"))).click()
+		#driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
 	except Exception as e:
 		print('ko co qc sau khi dang nhap')
 		pass
