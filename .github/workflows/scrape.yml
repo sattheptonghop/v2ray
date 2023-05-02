@@ -28,7 +28,7 @@ jobs:
           pip install pytest
       - name: Run the scraping script
         run: |-
-          python tltvpncom.py
+          echo "python tltvpncom.py"
           python trumpro.py
       - name: Commit and push if content changed
         run: |-
