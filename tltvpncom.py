@@ -78,7 +78,7 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 print('Đăng ký và đăng nhập')
 while driver.current_url != "https://tltvpn.com/#/dashboard":
 	try:
-		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[1]")
 		element.location_once_scrolled_into_view
 		element.click()
 		print('pa1 dang ky')
@@ -93,7 +93,10 @@ while driver.current_url != "https://tltvpn.com/#/dashboard":
 	# 8 | type | css=.input-group > .form-control | ${ticket}
 	try:
 		driver.implicitly_wait(10)
+		for i in range(10):
+		    email_input.send_keys(Keys.BACKSPACE)
 		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("1")
+		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("@gmail.com")
 	except Exception as e:
 		print(e)
 		pass
