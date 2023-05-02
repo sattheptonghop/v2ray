@@ -72,13 +72,13 @@ driver.implicitly_wait(10)
 # 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
 ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
 # 8 | type | css=.input-group > .form-control | ${ticket}
-mail_e = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+mail_e = driver.find_element(By.XPATH, "//input[@placeholder='Email']")
 mail_e.send_keys(ticket)
 mail_e.send_keys("@gmail.com")
 # 10 | type | css=.form-group:nth-child(2) > .form-control | 63668890
-driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control").send_keys("63668890")
+driver.find_element(By.XPATH, "(//input[@type='password'])[1]").send_keys("63668890")
 # 12 | type | css=.form-group:nth-child(3) > .form-control | 63668890
-driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
+driver.find_element(By.XPATH, "(//input[@type='password'])[2]").send_keys("63668890")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
 print('Đăng ký và đăng nhập')
 while driver.current_url != "https://tnetz.pro/#/dashboard":
