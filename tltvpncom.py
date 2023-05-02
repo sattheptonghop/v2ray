@@ -5,13 +5,11 @@ import time
 import json
 import re
 import requests
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-# Cho 10minutemail.net
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
@@ -104,16 +102,16 @@ while driver.current_url != "https://tnetz.pro/#/dashboard":
 			print('pa2 dang ky')
 			print(driver.current_url)
 			pass
-	if iLoop == 100:
+	if iLoop == 15:
 		iLoop = iLoop + 1
 		break
 if driver.current_url == "https://tnetz.pro/#/dashboard":
-	print('Đăng ký và đăng nhập thành công')
+	print('Trang quan tri dashboard')
 
 	try:
 		driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
 	except Exception as e:
-		print(e)
+		print('ko co qc sau khi dang nhap')
 		pass
 
 	print('Lấy link clash')
@@ -159,8 +157,8 @@ if driver.current_url == "https://tnetz.pro/#/dashboard":
 		element = driver.find_element(By.CSS_SELECTOR, ".fa-angle-down")
 		actions = ActionChains(driver)
 		actions.move_to_element(element).perform()
-		# 22 | click | linkText=Đăng xuất | 
-		driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
+		# ko tim thay
+		#driver.find_element(By.LINK_TEXT, "Đăng xuất").click()
 	except Exception as e:
 		print('Thất bại đăng xuất')
 		print(e)
