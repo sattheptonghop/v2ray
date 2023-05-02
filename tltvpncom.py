@@ -44,9 +44,8 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
-# 2 | open | https://tltvpn.com/ | 
-#driver.get("https://tltvpn.com/")
-driver.get("https://tltvpn.com/#/register")
+# 2 | open | https://tnetz.pro/#/register | 
+driver.get("https://tnetz.pro/#/register")
 # 3 | click | css=.tbclose-btn | 
 driver.implicitly_wait(10)
 try:
@@ -76,7 +75,7 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
 print('Đăng ký và đăng nhập')
-while driver.current_url != "https://tltvpn.com/#/dashboard":
+while driver.current_url != "https://tnetz.pro/#/dashboard":
 	try:
 		element = driver.find_element(By.XPATH, "//div[2]/button")
 		element.location_once_scrolled_into_view
