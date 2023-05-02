@@ -77,16 +77,18 @@ mail_e.send_keys(ticket)
 mail_e.send_keys("@gmail.com")
 # 10 | type | css=.form-group:nth-child(2) > .form-control | 63668890
 try:
-	driver.find_element(By.XPATH, "(//input[@type=\'password\'])").send_keys("63668890")
-	print('pass1 ok')
-except:	
 	driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div[2]/input").send_keys("63668890")
-	print('pass2')
+	print('pass1')
+except:	
+	driver.find_element(By.XPATH, "(//input[@type=\'password\'])").send_keys("63668890")
+	print('pass2 ok')
 # 12 | type | css=.form-group:nth-child(3) > .form-control | 63668890
 try:
+	#driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
+	driver.implicitly_wait(10)
 	driver.find_element(By.XPATH, "(//input[@type=\'password\'])[2]").send_keys("63668890")
 except:	
-	driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
+	pass
 # 13 | click | xpath=(//button[@type='button'])[3] | 
 print('Đăng ký và đăng nhập')
 while driver.current_url != "https://tnetz.pro/#/dashboard":
