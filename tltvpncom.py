@@ -82,18 +82,12 @@ while iDK < 3:
 	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
 		#element.location_once_scrolled_into_view
-		try:
-			element.click()
-		except:
-			driver.execute_script("arguments[0].click();", element)
+		driver.execute_script("arguments[0].click();", element)
 		print('pa1 dang ky')
 		print(driver.current_url)
 	except:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[2]")
-		try:
-			element.click()
-		except:
-			driver.execute_script("arguments[0].click();", element)
+		driver.execute_script("arguments[0].click();", element)
 		print('pa2 dang ky')
 		print(driver.current_url)
 		pass
