@@ -68,7 +68,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print('ko an duoc nut dang ky, thu chay bang link')
 			driver.get(oweb + "register")
 			pass
-		iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+		iemail = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
+		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
 		ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 		ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 		#driver.implicitly_wait(3)
@@ -84,9 +85,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print(oemail)
 			iemail.send_keys(oemail.split("@")[0])
 			iemail.send_keys("1")
-			iemail.send_keys("@")
-			driver.implicitly_wait(3)
-			iemail.send_keys(oemail.split("@")[1])
+			iemail.send_keys("@gmail.com")
+			#iemail.send_keys(oemail.split("@")[1])
 		else:
 			
 			print('Đăng ký và đăng nhập')
@@ -104,7 +104,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			element.click()
 			print('pa1 dang ky')
 		except:
-			element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[3]")))
+			element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
 			#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 			driver.execute_script("arguments[0].scrollIntoView();", element)
 			driver.execute_script("arguments[0].click();", element)
