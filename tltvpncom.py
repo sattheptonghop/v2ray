@@ -45,7 +45,7 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
-driver.get("https://tnetz.pro")
+driver.get("https://tnetz.pro/#/register")
 # 3 | click | css=.tbclose-btn | 
 driver.implicitly_wait(10)
 try:
