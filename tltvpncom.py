@@ -22,7 +22,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 chrome_options = Options()
 options = [
-	"--headless",
+	#"--headless",
 	"--window-size=800,1200",
 	"start-maximized",
 	"disable-infobars",
@@ -47,78 +47,66 @@ driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
 driver.get("https://tnetz.pro/#/register")
 # 3 | click | css=.tbclose-btn | 
-driver.implicitly_wait(10)
+driver.implicitly_wait(3)
 try:
 	element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
 	element.click()
+	print('dong thong bao')
 except:
-	element = driver.find_element(By.CSS_SELECTOR, ".d-sm-none")
-	element.click()
 	pass
-print('dong thong bao')
-print(driver.current_url)
-# 4 | click | linkText=Đăng ký | 
-#try:
-#	element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
-#	driver.execute_script("arguments[0].click();", element)
-#except:
-#	element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
-#	element.click()
-#	pass
-print('an dang ky')
-print(driver.current_url)
-driver.implicitly_wait(10)
-
-# 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
-ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
-# 8 | type | css=.input-group > .form-control | ${ticket}
-mail_e = driver.find_element(By.XPATH, "//input[@placeholder='Email']")
-mail_e.send_keys(ticket)
-mail_e.send_keys("@gmail.com")
-# 10 | type | css=.form-group:nth-child(2) > .form-control | 63668890
-try:
-	driver.find_element(By.XPATH, "//main[@id='main-container']/div/div/div/div/div[2]/div/div/div[2]/input").send_keys("63668890")
-	print('pass1')
-except:	
-	driver.find_element(By.XPATH, "(//input[@type=\'password\'])").send_keys("63668890")
-	print('pass2 ok')
-# 12 | type | css=.form-group:nth-child(3) > .form-control | 63668890
-try:
-	#driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
-	driver.implicitly_wait(10)
-	driver.find_element(By.XPATH, "(//input[@type=\'password\'])[2]").send_keys("63668890")
-except:	
-	pass
-# 13 | click | xpath=(//button[@type='button'])[3] | 
-print('Đăng ký và đăng nhập')
+	
+iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
+iLoop = 0
 while driver.current_url != "https://tnetz.pro/#/dashboard":
-#iDK = 0
-#while iDK < 3:
-#	iDK = iDK + 1
-	try:
-		element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
-		driver.execute_script("arguments[0].scrollIntoView();", element)
-		driver.execute_script("arguments[0].click();", element)
-		print('pa1 dang ky')
-		print(driver.current_url)
-	except:
-		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[2]")
-		driver.execute_script("arguments[0].scrollIntoView();", element)
-		driver.execute_script("arguments[0].click();", element)
-		print('pa2 dang ky')
-		print(driver.current_url)
-		pass
-	# 8 | type | css=.input-group > .form-control | ${ticket}
-	try:
-		driver.implicitly_wait(60)
-		for i in range(10):
-		    mail_e.send_keys(Keys.BACKSPACE)
-		#newt = driver.execute_script("return Math.random(). toString(36).substring(1,1)")
-		mail_e.send_keys("1")
-		mail_e.send_keys("@gmail.com")
-	except Exception as e:
-		print(e)
-		pass
+	# 4 | click | linkText=Đăng ký | 
+	if driver.current_url != "https://tnetz.pro/#/login":
+		try:
+			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			element.click()
+			print('an dang ky')
+		except:
+			pass
+		driver.implicitly_wait(10)
+	if driver.current_url == "https://tnetz.pro/#/register":
+		if iemail.is_displayed():
+			# Get the element's value attribute
+			value = iemail.get_attribute("value")
+			print("Value: ", value)
+		else:
+			print("Element is not visible")
+		if iemail.get_attribute("value"):
+			print('sua lai email')
+			for i in range(10):
+				iemail.send_keys(Keys.BACKSPACE)
+			iemail.send_keys("1")
+			iemail.send_keys("@gmail.com")
+		else:
+			print('Đăng ký và đăng nhập')
+			ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
+			iemail.send_keys(ticket)
+			iemail.send_keys("@gmail.com")
+			ipass1.send_keys("63668890")
+			ipass2.send_keys("63668890")
+			print('nhập xong')
+			driver.implicitly_wait(3)
+		try:
+			element = driver.find_element(By.XPATH, "//div[2]/button")
+			element.location_once_scrolled_into_view
+			element.click()
+			print('pa1 dang ky')
+			print(driver.current_url)
+		except:
+			element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+			driver.execute_script("arguments[0].scrollIntoView();", element)
+			driver.execute_script("arguments[0].click();", element)
+			print('pa2 dang ky')
+			print(driver.current_url)
+			pass
+	if iLoop == 100:
+		iLoop = iLoop + 1
+		break
 print('Đăng ký và đăng nhập thành công')
 
 try:
