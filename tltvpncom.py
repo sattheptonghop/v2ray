@@ -37,7 +37,7 @@ for option in options:
 
 mobile_emulation = {
     "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
-    "userAgent": "Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36"
+    "userAgent": "Mozilla/5.0 (iPad; CPU OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
 }
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
@@ -75,16 +75,18 @@ driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control").send_keys("63668890")
 # 13 | click | xpath=(//button[@type='button'])[3] | 
 print('Đăng ký và đăng nhập')
-while driver.current_url != "https://tnetz.pro/#/dashboard":
+#while driver.current_url != "https://tnetz.pro/#/dashboard":
+while iDK < 10:
+	iDK = iDK + 1
 	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
-		element.location_once_scrolled_into_view
+		#element.location_once_scrolled_into_view
 		element.click()
 		print('pa1 dang ky')
 		print(driver.current_url)
 	except:
 		element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[2]")
-		element.location_once_scrolled_into_view
+		#element.location_once_scrolled_into_view
 		element.click()
 		print('pa2 dang ky')
 		print(driver.current_url)
