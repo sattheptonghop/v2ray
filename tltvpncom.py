@@ -121,6 +121,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			except:
 				print("Ko Chuyển sang iframe dc")
 				pass
+			print('thu an nut dang ky')
 			try:
 				element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
 				driver.execute_script("arguments[0].scrollIntoView();", element)
@@ -129,25 +130,25 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				print('an nut dang ky pa1')
 				print(driver.current_url)
 			except:
-				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
+				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
 				#element = driver.find_element(By.XPATH, "//div[2]/button")
-				element.location_once_scrolled_into_view
-				element.click()
-				time.sleep(1)
+				#element.location_once_scrolled_into_view
+				#element.click()
+				#time.sleep(1)
 				print('an nut dang ky pa2')
-				print(driver.current_url)
+				#print(driver.current_url)
 				pass
-			try:
-				print("Chuyển lai iframe")
-				driver.switch_to.default_content()
-			except:
-				print("Ko Chuyển lai iframe dc")
-				pass
+
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
 			pass
-
+		try:
+			print("Chuyển lai iframe")
+			driver.switch_to.default_content()
+		except:
+			print("Ko Chuyển lai iframe dc")
+			pass
 	if iLoop == 5:
 		break
 	else:
