@@ -50,12 +50,6 @@ iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
 while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 	try:
-		# Chuyển sang iframe
-		iframe = driver.find_element(By.XPATH, '//iframe')
-		driver.switch_to.frame(iframe)
-	except:
-		pass
-	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
 		element.click()
 		print('dong thong bao')
@@ -121,6 +115,12 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					print(e)
 					pass
 			try:
+				# Chuyển sang iframe
+				iframe = driver.find_element(By.XPATH, '//iframe')
+				driver.switch_to.frame(iframe)
+			except:
+				pass
+			try:
 				element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
 				driver.execute_script("arguments[0].scrollIntoView();", element)
 				driver.execute_script("arguments[0].click();", element)
@@ -135,6 +135,11 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				time.sleep(1)
 				print('an nut dang ky pa2')
 				print(driver.current_url)
+				pass
+			try:
+				# Chuyển lai iframe
+				driver.switch_to.default_content()
+			except:
 				pass
 		except Exception as e:
 			print("khong co iemail")
