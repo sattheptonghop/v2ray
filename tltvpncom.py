@@ -116,8 +116,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				print(iemail.get_attribute("value"))
 			#driver.implicitly_wait(3)
 			try:
-				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='btn btn-block btn-hero btn-hero-success']")))
-				#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='btn btn-block btn-hero btn-hero-success']")))
+				element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[2]")
 				driver.execute_script("arguments[0].scrollIntoView();", element)
 				driver.execute_script("arguments[0].click();", element)
 				time.sleep(1)
