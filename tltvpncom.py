@@ -44,11 +44,11 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
-driver.get("https://tnetz.pro/")
+driver.get("https://tnetz.pro/#/register")
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
-while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and driver.execute_script("return document.readyState") == "complete":
+while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
 		element.click()
@@ -56,7 +56,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 	except:
 		pass
 	# 4 | click | linkText=Đăng ký | 
-	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login" and driver.execute_script("return document.readyState") == "complete":
+	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
 		print(driver.current_url)
 		print('Thu chuyen toi trang dang ky')
 		try:
@@ -72,7 +72,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 			pass
 		time.sleep(1)
 			
-	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register" and driver.execute_script("return document.readyState") == "complete":
+	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
 		print("dang o trang dang ky")
 		print(driver.current_url)
 		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
