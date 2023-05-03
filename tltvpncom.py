@@ -129,9 +129,10 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
-			except:
-				#element = driver.find_element(By.XPATH, "//div[2]/button")
-				print('an nut dang ky pa2')
+			except Exception as e:
+				#ko duoc
+				print('ko an duoc nut dang ky')
+				print(e)
 				pass
 
 		except Exception as e:
