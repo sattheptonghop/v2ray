@@ -65,9 +65,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			#element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
 			#element = driver.find_element(By.CSS_SELECTOR, "[href='#/register']")
 			element = driver.find_element(By.CSS_SELECTOR, "fa fa-plus text-muted mr-1"
-			element.click()
+			#element.click()
 			#driver.execute_script("arguments[0].scrollIntoView();", element)
-			#driver.execute_script("arguments[0].click();", element)
+			driver.execute_script("arguments[0].click();", element)
 			print('an dang ky')
 		except:
 			print('ko an duoc nut dang ky, thu chay bang link')
