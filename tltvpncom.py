@@ -115,13 +115,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					print("loi khi nhap email, pass")
 					print(e)
 					pass
-			try:
-				print("Chuyển sang iframe")
-				iframe = driver.find_element(By.XPATH, '//iframe')
-				driver.switch_to.frame(iframe)
-			except:
-				print("Ko Chuyển sang iframe dc")
-				pass
+
 			print('thu an nut dang ky')
 			try:
 				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
@@ -134,7 +128,13 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				print('ko an duoc nut dang ky')
 				print(e)
 				pass
-
+			try:
+				print("Chuyển sang iframe")
+				iframe = driver.find_element(By.XPATH, '//iframe')
+				driver.switch_to.frame(iframe)
+			except:
+				print("Ko Chuyển sang iframe dc")
+				pass
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
