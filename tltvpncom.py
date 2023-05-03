@@ -112,7 +112,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				ipass1.send_keys("63668890")
 				ipass2.send_keys("63668890")
 				print('nhập xong')
-				print('iemail.get_attribute("value"))
+				print('iemail.get_attribute("value")
 			#driver.implicitly_wait(3)
 			try:
 				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='btn btn-block btn-hero btn-hero-success']")))
