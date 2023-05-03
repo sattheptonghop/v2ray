@@ -133,6 +133,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				for element in elements:
 				    print(element.get_attribute('outerHTML'))
 				pass
+			print("Bat dau Chuyển iframe")
+			print(driver.current_url)
 			try:
 				print("Chuyển sang iframe")
 				iframe = driver.find_element(By.XPATH, '//iframe')
