@@ -66,13 +66,14 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print('ko an duoc nut dang ky, thu chay bang link')
 			driver.get(oweb + "register")
 			pass
-		iemail = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
-		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
-		#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
-		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
-		ipass1 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
-		ipass2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
-		#driver.implicitly_wait(3)
+		if driver.execute_script("return document.readyState") == "complete":
+			iemail = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
+			#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+			#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+			#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
+			ipass1 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
+			ipass2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
+			#driver.implicitly_wait(3)
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
 		if iemail.get_attribute("value"):
 			print('sua lai email')
@@ -133,7 +134,8 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		actions.move_to_element(element).perform()
 		driver.execute_script("window.scrollTo(0,306)")
 		driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
-		element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
+		#element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
+		element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.LINK_TEXT, "Chuyển đến Clash For Android")))
 		url = element.get_attribute("href")
 		result = url.split("url=")[1].split("&name=")[0]
 		print("result=")
