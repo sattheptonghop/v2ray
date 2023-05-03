@@ -26,9 +26,11 @@ jobs:
           pip install --upgrade pip
           pip install requests beautifulsoup4 pandas webdriver-manager selenium
           pip install pytest
-      - name: Run the scraping script
+      - name: Run trumpro.py
         run: |-
           python trumpro.py
+      - name: Run tltvpncom.py
+        run: |-
           python tltvpncom.py
       - name: Commit and push if content changed
         run: |-
