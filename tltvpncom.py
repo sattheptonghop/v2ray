@@ -69,12 +69,16 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		#if driver.execute_script("return document.readyState") == "complete":
 			
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
-		iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
-		ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
-		ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
-		#iemail = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
-		#ipass1 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
-		#ipass2 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
+		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+		#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
+		try:
+			iemail = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
+			ipass1 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
+			ipass2 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
+		except Exception as e:
+			print(e)
+			pass
 		#driver.implicitly_wait(3)
 		if iemail.get_attribute("value"):
 			print('sua lai email')
@@ -89,7 +93,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 				iemail.send_keys("1")
 				iemail.send_keys("@gmail.com")
 				#iemail.send_keys(oemail.split("@")[1])
-			except:
+			except Exception as e:
+				print(e)
 				pass
 		else:
 			
