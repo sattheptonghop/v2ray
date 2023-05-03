@@ -73,9 +73,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 		try:
-			iemail = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
-			ipass1 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
-			ipass2 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
+			iemail = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//input[@placeholder='Email']")))
+			ipass1 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type=\'password\'])")))
+			ipass2 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type=\'password\'])[2]")))
 			#driver.implicitly_wait(3)
 			if iemail.get_attribute("value"):
 				print('sua lai email')
