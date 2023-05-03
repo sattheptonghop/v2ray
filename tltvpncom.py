@@ -44,7 +44,7 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
-driver.get("https://tnetz.pro/#/register")
+driver.get("https://tnetz.pro/#/login")
 
 # Chuyển sang iframe
 iframe = driver.find_element(By.XPATH, '//iframe')
@@ -64,12 +64,12 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		print(driver.current_url)
 		print('Thu chuyen toi trang dang ky')
 		try:
-			driver.close
-			driver.get("https://tnetz.pro/#/register")
-			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			#driver.close
+			#driver.get("https://tnetz.pro/#/register")
+			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
 			#actions = ActionChains(driver)
 			#actions.move_to_element(element).perform()
-			#element.click()
+			element.click()
 			#driver.execute_script("arguments[0].click();", element)
 			print('an dang ky')
 		except:
@@ -82,21 +82,18 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
 		print("dang o trang dang ky")
 		print(driver.current_url)
-		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
-		#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
-		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
+
 		try:
 			time.sleep(1)
-			iemail = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='input-group']/input[@class='form-control form-control-lg form-control-alt']")))
-			ipass1 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='py-3']/div[2]/input[@class='form-control form-control-lg form-control-alt']")))
-			ipass2 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[3]/input[@class='form-control form-control-lg form-control-alt']")))
+			iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+			ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+			ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
+			#iemail = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='input-group']/input[@class='form-control form-control-lg form-control-alt']")))
+			#ipass1 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='py-3']/div[2]/input[@class='form-control form-control-lg form-control-alt']")))
+			#ipass2 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[3]/input[@class='form-control form-control-lg form-control-alt']")))
 			#driver.implicitly_wait(3)
 			if iemail.get_attribute("value"):
 				print('sua lai email')
-				#for i in range(10):
-					#iemail.send_keys(Keys.BACKSPACE)
-					#time.sleep(1)
-					#pass
 				try:
 					oemail = iemail.get_attribute("value")
 					iemail.clear()
@@ -105,25 +102,29 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					iemail.send_keys("@gmail.com")
 					#iemail.send_keys(oemail.split("@")[1])
 				except Exception as e:
+					print("loi khi sua email")
 					print(e)
 					pass
 			else:
-				
-				print('Đăng ký và đăng nhập')
-				ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
-				iemail.send_keys(ticket)
-				iemail.send_keys("@gmail.com")
-				ipass1.send_keys("63668890")
-				ipass2.send_keys("63668890")
-				print('nhập xong')
-				print(iemail.get_attribute("value"))
-			#driver.implicitly_wait(3)
+				try:
+					print('Đăng ký và đăng nhập')
+					ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
+					iemail.send_keys(ticket)
+					iemail.send_keys("@gmail.com")
+					ipass1.send_keys("63668890")
+					ipass2.send_keys("63668890")
+					print('nhập xong')
+					print(iemail.get_attribute("value"))
+				except Exception as e:
+					print("loi khi nhap email, pass")
+					print(e)
+					pass
 			try:
 				element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
 				driver.execute_script("arguments[0].scrollIntoView();", element)
 				driver.execute_script("arguments[0].click();", element)
 				time.sleep(1)
-				print('pa2 dang ky')
+				print('an nut dang ky pa1')
 				print(driver.current_url)
 			except:
 				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
@@ -131,12 +132,11 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				element.location_once_scrolled_into_view
 				element.click()
 				time.sleep(1)
-				print('pa1 dang ky')
+				print('an nut dang ky pa2')
 				print(driver.current_url)
 				pass
 		except Exception as e:
 			print("khong co iemail")
-			driver.refresh()
 			print(e)
 			pass
 
