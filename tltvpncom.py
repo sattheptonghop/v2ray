@@ -61,10 +61,10 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		print('Thu chuyen toi trang dang ky')
 		try:
 			#driver.get("https://tnetz.pro/#/register")
-			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
 			#element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
 			#element = driver.find_element(By.CSS_SELECTOR, "[href='#/register']")
-			element = driver.find_element(By.CSS_SELECTOR, "fa fa-plus text-muted mr-1"
+			#element = driver.find_element(By.CSS_SELECTOR, "fa fa-plus text-muted mr-1"
 			#element.click()
 			#driver.execute_script("arguments[0].scrollIntoView();", element)
 			driver.execute_script("arguments[0].click();", element)
@@ -72,7 +72,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		except:
 			print('ko an duoc nut dang ky, thu chay bang link')
 			#driver.get(oweb + "register")
-			driver.get("https://tnetz.pro/#/register")
+			driver.get("#/register")
 			pass
 		time.sleep(1)
 			
