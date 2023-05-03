@@ -44,7 +44,7 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
-driver.get("https://tnetz.pro/#/login")
+driver.get("https://tnetz.pro/#/register")
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
@@ -68,15 +68,15 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		try:
 			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
 			element = driver.find_element(By.XPATH, "//a[contains(@href, \'#/register\')]")
-			#element.click()
-			driver.execute_script("arguments[0].click();", element)
+			element.click()
+			#driver.execute_script("arguments[0].click();", element)
 			print('an dang ky')
-		except:
+		except Exception as e:
+			#ko duoc
+			#driver.close
+			#driver.get("https://tnetz.pro/#/register")
 			print('ko an duoc nut dang ky, thu chay bang link')
-			#driver.get(oweb + "register")
-			#driver.get("#/register")
-			driver.close
-			driver.get("https://tnetz.pro/#/register")
+			print(e)
 			pass
 		time.sleep(1)
 			
