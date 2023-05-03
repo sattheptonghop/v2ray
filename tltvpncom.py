@@ -44,7 +44,7 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
-driver.get("https://tnetz.pro/#/login")
+driver.get("https://tnetz.pro/#/register")
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
@@ -57,6 +57,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		pass
 	# 4 | click | linkText=Đăng ký | 
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
+		print(driver.current_url)
 		print('Thu chuyen toi trang dang ky')
 		try:
 			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
@@ -69,6 +70,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		#if driver.execute_script("return document.readyState") == "complete":
 			
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
+		print(driver.current_url)
 		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
 		#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
