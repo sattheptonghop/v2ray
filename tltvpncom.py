@@ -36,7 +36,7 @@ for option in options:
 
 mobile_emulation = {
     "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
-    #"userAgent": "Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36"
+    "userAgent": "Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36"
 }
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
@@ -63,7 +63,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
 			#element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
 			element = driver.find_element(By.CSS_SELECTOR, "[href='#/register']")
-			element.click()
+			#element.click()
+			driver.execute_script("arguments[0].scrollIntoView();", element)
+			driver.execute_script("arguments[0].click();", element)
 			print('an dang ky')
 		except:
 			print('ko an duoc nut dang ky, thu chay bang link')
