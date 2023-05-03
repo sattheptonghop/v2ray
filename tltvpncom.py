@@ -110,14 +110,14 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 				print('nhập xong')
 			#driver.implicitly_wait(3)
 			try:
-				element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
+				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
 				#element = driver.find_element(By.XPATH, "//div[2]/button")
 				element.location_once_scrolled_into_view
 				element.click()
 				time.sleep(1)
 				print('pa1 dang ky')
 			except:
-				element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[2]/button")))
+				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='btn btn-block btn-hero btn-hero-success']")))
 				#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 				driver.execute_script("arguments[0].scrollIntoView();", element)
 				driver.execute_script("arguments[0].click();", element)
@@ -132,6 +132,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 			pass
 
 	if iLoop == 15:
+		print(iLoop)
 		iLoop = iLoop + 1
 		break
 if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
