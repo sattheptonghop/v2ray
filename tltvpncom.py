@@ -124,10 +124,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				pass
 			print('thu an nut dang ky')
 			try:
-				#element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
-				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
+				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
+				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
 				driver.execute_script("arguments[0].click();", element)
-				time.sleep(1)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
 			except:
