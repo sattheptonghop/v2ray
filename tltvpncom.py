@@ -60,9 +60,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		print(driver.current_url)
 		print('Thu chuyen toi trang dang ky')
 		try:
-			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
 			#element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
-			element = driver.find_element(By.CSS_SELECTOR, "[href='#/register']")
+			#element = driver.find_element(By.CSS_SELECTOR, "[href='#/register']")
 			#element.click()
 			driver.execute_script("arguments[0].scrollIntoView();", element)
 			driver.execute_script("arguments[0].click();", element)
@@ -119,6 +119,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				element.click()
 				time.sleep(1)
 				print('pa1 dang ky')
+				print(driver.current_url)
 			except:
 				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='btn btn-block btn-hero btn-hero-success']")))
 				#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
@@ -126,8 +127,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				driver.execute_script("arguments[0].click();", element)
 				time.sleep(1)
 				print('pa2 dang ky')
+				print(driver.current_url)
 				pass
-			print(driver.current_url)
 		except Exception as e:
 			print("khong co iemail")
 			driver.refresh()
