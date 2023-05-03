@@ -60,10 +60,12 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		print(driver.current_url)
 		print('Thu chuyen toi trang dang ky')
 		try:
-			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
-			actions = ActionChains(driver)
-			actions.move_to_element(element).perform()
-			element.click()
+			driver.close
+			driver.get("https://tnetz.pro/#/register")
+			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			#actions = ActionChains(driver)
+			#actions.move_to_element(element).perform()
+			#element.click()
 			#driver.execute_script("arguments[0].click();", element)
 			print('an dang ky')
 		except:
