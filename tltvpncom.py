@@ -48,7 +48,7 @@ driver.get("https://tnetz.pro/#/login")
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
-while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
+while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and driver.execute_script("return document.readyState") == "complete":
 	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
 		element.click()
@@ -66,15 +66,16 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print('ko an duoc nut dang ky, thu chay bang link')
 			driver.get(oweb + "register")
 			pass
-		if driver.execute_script("return document.readyState") == "complete":
-			iemail = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
-			#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
-			#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
-			#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
-			ipass1 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
-			ipass2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
-			#driver.implicitly_wait(3)
+		#if driver.execute_script("return document.readyState") == "complete":
+			
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
+		iemail = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
+		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+		#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
+		ipass1 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
+		ipass2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
+		#driver.implicitly_wait(3)
 		if iemail.get_attribute("value"):
 			print('sua lai email')
 			#for i in range(10):
