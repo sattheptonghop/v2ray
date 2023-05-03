@@ -200,6 +200,11 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		print('Thất bại đăng xuất')
 		#print(e)
 		pass
+
+# Tìm tất cả các phần tử HTML có thể click được và in ra tên của chúng
+elements = driver.find_elements(By.XPATH, '//*[@onclick or @href]')
+for element in elements:
+    print(element.get_attribute('outerHTML'))
 	
 # Đóng trình duyệt web
 driver.save_screenshot('tltvpncom.png')
