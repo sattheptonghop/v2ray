@@ -141,7 +141,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print(e)
 			pass
 
-	if iLoop == 15:
+	if iLoop == 5:
 		break
 	else:
 		iLoop = iLoop + 1
