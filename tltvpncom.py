@@ -115,7 +115,13 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					print("loi khi nhap email, pass")
 					print(e)
 					pass
-
+			try:
+				print("Chuyển sang iframe")
+				iframe = driver.find_element(By.XPATH, '//iframe')
+				driver.switch_to.frame(iframe)
+			except:
+				print("Ko Chuyển sang iframe dc")
+				pass
 			print('thu an nut dang ky')
 			try:
 				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
@@ -127,14 +133,12 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				#ko duoc
 				print('ko an duoc nut dang ky')
 				print(e)
+				# Tìm tất cả các phần tử HTML có thể click được và in ra tên của chúng
+				elements = driver.find_elements(By.XPATH, '//*[@onclick or @href or @button]')
+				for element in elements:
+				    print(element.get_attribute('outerHTML'))
 				pass
-			try:
-				print("Chuyển sang iframe")
-				iframe = driver.find_element(By.XPATH, '//iframe')
-				driver.switch_to.frame(iframe)
-			except:
-				print("Ko Chuyển sang iframe dc")
-				pass
+
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
@@ -210,7 +214,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		#print(e)
 		pass
 
-driver.switch_to.default_content()
+
 	
 # Đóng trình duyệt web
 driver.save_screenshot('tltvpncom.png')
