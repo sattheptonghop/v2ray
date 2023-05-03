@@ -21,7 +21,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 chrome_options = Options()
 options = [
-	#"--headless",
+	"--headless",
 	"--window-size=800,1200",
 	"start-maximized",
 	"disable-infobars",
