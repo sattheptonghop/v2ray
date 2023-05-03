@@ -61,7 +61,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		print('Thu chuyen toi trang dang ky')
 		try:
 			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
-			element = driver.find_element(By.XPATH, "//a[contains(@href, \'#/register\')]")
+			element = driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div/div/div[2]/div/form/div[2]/p/a[2]")
 			element.click()
 			#driver.execute_script("arguments[0].click();", element)
 			print('an dang ky')
@@ -118,15 +118,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 
 			print('thu an nut dang ky')
 			try:
-				element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
+				element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//main[@id=\'main-container\']/div/div/div/div/div[2]/div/div[2]/button")))
+				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
 				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
-				try:
-					print("Chuyển sang iframe")
-					iframe = driver.find_element(By.XPATH, '//iframe')
-					driver.switch_to.frame(iframe)
-				except:
-					print("Ko Chuyển sang iframe dc")
-					pass
 				driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
@@ -138,7 +132,13 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				for element in elements:
 				    print(element.get_attribute('outerHTML'))
 				pass
-
+			try:
+				print("Chuyển sang iframe")
+				iframe = driver.find_element(By.XPATH, '//iframe')
+				driver.switch_to.frame(iframe)
+			except:
+				print("Ko Chuyển sang iframe dc")
+				pass
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
