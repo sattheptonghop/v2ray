@@ -20,7 +20,10 @@ jobs:
       - name: Remove default Chromium
         run: sudo apt purge chromium-browser
       - name: Install a new Chromium
-        run: sudo apt install -y chromium
+        run: |-
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb
+          'sudo apt install -y chromium-browser
       - name: Install all necessary packages
         run: |-
           pip install --upgrade pip
