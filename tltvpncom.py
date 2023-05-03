@@ -115,10 +115,11 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					print(e)
 					pass
 			try:
-				# Chuyển sang iframe
+				print("Chuyển sang iframe")
 				iframe = driver.find_element(By.XPATH, '//iframe')
 				driver.switch_to.frame(iframe)
 			except:
+				print("Ko Chuyển sang iframe dc")
 				pass
 			try:
 				element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
@@ -137,9 +138,10 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				print(driver.current_url)
 				pass
 			try:
-				# Chuyển lai iframe
+				print("Chuyển lai iframe")
 				driver.switch_to.default_content()
 			except:
+				print("Ko Chuyển lai iframe dc")
 				pass
 		except Exception as e:
 			print("khong co iemail")
