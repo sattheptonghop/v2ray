@@ -62,8 +62,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		try:
 			#driver.get("https://tnetz.pro/#/register")
 			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
-			element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
+			#element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
 			#element = driver.find_element(By.CSS_SELECTOR, "[href='#/register']")
+			element = driver.find_element(By.CSS_SELECTOR, "btn btn-sm btn-light d-block d-lg-inline-block mb-1"
 			element.click()
 			#driver.execute_script("arguments[0].scrollIntoView();", element)
 			#driver.execute_script("arguments[0].click();", element)
