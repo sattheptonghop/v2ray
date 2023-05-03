@@ -76,50 +76,51 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 			iemail = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
 			ipass1 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
 			ipass2 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
+			#driver.implicitly_wait(3)
+			if iemail.get_attribute("value"):
+				print('sua lai email')
+				#for i in range(10):
+					#iemail.send_keys(Keys.BACKSPACE)
+					#time.sleep(1)
+					#pass
+				try:
+					oemail = iemail.get_attribute("value")
+					iemail.clear()
+					iemail.send_keys(oemail.split("@")[0])
+					iemail.send_keys("1")
+					iemail.send_keys("@gmail.com")
+					#iemail.send_keys(oemail.split("@")[1])
+				except Exception as e:
+					print(e)
+					pass
+			else:
+				
+				print('Đăng ký và đăng nhập')
+				ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
+				iemail.send_keys(ticket)
+				iemail.send_keys("@gmail.com")
+				ipass1.send_keys("63668890")
+				ipass2.send_keys("63668890")
+				print('nhập xong')
+			#driver.implicitly_wait(3)
+			try:
+				element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[2]/button")))
+				#element = driver.find_element(By.XPATH, "//div[2]/button")
+				element.location_once_scrolled_into_view
+				element.click()
+				print('pa1 dang ky')
+			except:
+				element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
+				#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
+				driver.execute_script("arguments[0].scrollIntoView();", element)
+				driver.execute_script("arguments[0].click();", element)
+				print('pa2 dang ky')
+				pass
+			print(driver.current_url)
 		except Exception as e:
 			print(e)
 			pass
-		#driver.implicitly_wait(3)
-		if iemail.get_attribute("value"):
-			print('sua lai email')
-			#for i in range(10):
-				#iemail.send_keys(Keys.BACKSPACE)
-				#time.sleep(1)
-				#pass
-			try:
-				oemail = iemail.get_attribute("value")
-				iemail.clear()
-				iemail.send_keys(oemail.split("@")[0])
-				iemail.send_keys("1")
-				iemail.send_keys("@gmail.com")
-				#iemail.send_keys(oemail.split("@")[1])
-			except Exception as e:
-				print(e)
-				pass
-		else:
-			
-			print('Đăng ký và đăng nhập')
-			ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
-			iemail.send_keys(ticket)
-			iemail.send_keys("@gmail.com")
-			ipass1.send_keys("63668890")
-			ipass2.send_keys("63668890")
-			print('nhập xong')
-		#driver.implicitly_wait(3)
-		try:
-			element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[2]/button")))
-			#element = driver.find_element(By.XPATH, "//div[2]/button")
-			element.location_once_scrolled_into_view
-			element.click()
-			print('pa1 dang ky')
-		except:
-			element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
-			#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
-			driver.execute_script("arguments[0].scrollIntoView();", element)
-			driver.execute_script("arguments[0].click();", element)
-			print('pa2 dang ky')
-			pass
-		print(driver.current_url)
+
 	if iLoop == 15:
 		iLoop = iLoop + 1
 		break
