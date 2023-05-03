@@ -21,7 +21,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 chrome_options = Options()
 options = [
-	"--headless",
+	#"--headless",
 	"--window-size=800,1200",
 	"start-maximized",
 	"disable-infobars",
@@ -44,7 +44,7 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
-driver.get("https://tnetz.pro/#/login")
+driver.get("https://tnetz.pro/")
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
@@ -69,17 +69,19 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 			#driver.get(oweb + "register")
 			driver.get("https://tnetz.pro/#/register")
 			pass
-		#if driver.execute_script("return document.readyState") == "complete":
+		time.sleep(1)
 			
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register" and driver.execute_script("return document.readyState") == "complete":
+		print("dang o trang dang ky")
 		print(driver.current_url)
 		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
 		#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
 		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 		try:
-			iemail = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//input[@placeholder='Email']")))
-			ipass1 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type=\'password\'])")))
-			ipass2 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type=\'password\'])[2]")))
+			time.sleep(1)
+			iemail = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//input[@placeholder='Email']")))
+			ipass1 = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type=\'password\'])")))
+			ipass2 = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type=\'password\'])[2]")))
 			#driver.implicitly_wait(3)
 			if iemail.get_attribute("value"):
 				print('sua lai email')
@@ -124,6 +126,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 				pass
 			print(driver.current_url)
 		except Exception as e:
+			print("khong co iemail")
+			driver.refresh()
 			print(e)
 			pass
 
