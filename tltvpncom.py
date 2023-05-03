@@ -61,7 +61,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		print('Thu chuyen toi trang dang ky')
 		try:
 			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
-			element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
+			#element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
+			element = driver.find_element(By.CSS_SELECTOR, "[href='#/register']")
 			element.click()
 			print('an dang ky')
 		except:
