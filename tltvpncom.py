@@ -46,13 +46,15 @@ driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
 driver.get("https://tnetz.pro/#/login")
 
-# Chuyển sang iframe
-iframe = driver.find_element(By.XPATH, '//iframe')
-driver.switch_to.frame(iframe)
-
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
 while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
+	try:
+		# Chuyển sang iframe
+		iframe = driver.find_element(By.XPATH, '//iframe')
+		driver.switch_to.frame(iframe)
+	except:
+		pass
 	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
 		element.click()
@@ -67,15 +69,14 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			#driver.close
 			#driver.get("https://tnetz.pro/#/register")
 			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
-			#actions = ActionChains(driver)
-			#actions.move_to_element(element).perform()
-			element.click()
-			#driver.execute_script("arguments[0].click();", element)
+			#element.click()
+			driver.execute_script("arguments[0].click();", element)
 			print('an dang ky')
 		except:
 			print('ko an duoc nut dang ky, thu chay bang link')
 			#driver.get(oweb + "register")
-			driver.get("#/register")
+			#driver.get("#/register")
+			driver.get("https://tnetz.pro/#/register")
 			pass
 		time.sleep(1)
 			
