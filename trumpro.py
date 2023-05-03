@@ -19,7 +19,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROME).install())
 chrome_options = Options()
 options = [
 	"--headless",
