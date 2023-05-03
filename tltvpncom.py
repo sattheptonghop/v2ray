@@ -95,6 +95,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					iemail.send_keys(oemail.split("@")[0])
 					iemail.send_keys("1")
 					iemail.send_keys("@gmail.com")
+					print(iemail.get_attribute("value"))
 					#iemail.send_keys(oemail.split("@")[1])
 				except Exception as e:
 					print("loi khi sua email")
@@ -123,20 +124,15 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				pass
 			print('thu an nut dang ky')
 			try:
-				element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
-				driver.execute_script("arguments[0].scrollIntoView();", element)
+				#element = driver.find_element(By.CSS_SELECTOR, ".btn-block")
+				element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
 				driver.execute_script("arguments[0].click();", element)
 				time.sleep(1)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
 			except:
-				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
 				#element = driver.find_element(By.XPATH, "//div[2]/button")
-				#element.location_once_scrolled_into_view
-				#element.click()
-				#time.sleep(1)
 				print('an nut dang ky pa2')
-				#print(driver.current_url)
 				pass
 
 		except Exception as e:
