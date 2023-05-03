@@ -22,13 +22,13 @@ chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).in
 chrome_options = Options()
 options = [
 	"--headless",
-	"--window-size=800,1200",
+	#"--window-size=800,1200",
 	"start-maximized",
-	"disable-infobars",
-	"--disable-gpu",
-	"--ignore-certificate-errors",
-	"--disable-extensions",
-	"--no-sandbox",
+	#"disable-infobars",
+	#"--disable-gpu",
+	#"--ignore-certificate-errors",
+	#"--disable-extensions",
+	#"--no-sandbox",
 	"--disable-dev-shm-usage"
 ]
 for option in options:
@@ -36,7 +36,7 @@ for option in options:
 
 mobile_emulation = {
     "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
-    "userAgent": "Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36"
+    "userAgent": "Mozilla/5.0 (Android 12; Mobile; LG-M255; rv:100.0) Gecko/100.0 Firefox/100.0Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.61 Mobile Safari/537.36"
 }
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
