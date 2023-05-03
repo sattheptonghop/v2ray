@@ -61,7 +61,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		print('Thu chuyen toi trang dang ky')
 		try:
 			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
-			element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
+			element = driver.find_element(By.XPATH, "//a[contains(.,'Đăng ký')]")
 			element.click()
 			print('an dang ky')
 		except:
@@ -79,9 +79,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
 		try:
 			time.sleep(1)
-			iemail = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//input[@placeholder='Email']")))
-			ipass1 = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type=\'password\'])")))
-			ipass2 = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type=\'password\'])[2]")))
+			iemail = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='input-group']/input[@class='form-control form-control-lg form-control-alt']")))
+			ipass1 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='py-3']/div[2]/input[@class='form-control form-control-lg form-control-alt']")))
+			ipass2 = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "//div[3]/input[@class='form-control form-control-lg form-control-alt']")))
 			#driver.implicitly_wait(3)
 			if iemail.get_attribute("value"):
 				print('sua lai email')
