@@ -69,12 +69,12 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		#if driver.execute_script("return document.readyState") == "complete":
 			
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "register":
-		iemail = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
-		#iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
-		#ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
-		#ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
-		ipass1 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
-		ipass2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
+		iemail = driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control")
+		ipass1 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")
+		ipass2 = driver.find_element(By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")
+		#iemail = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".input-group > .form-control")))
+		#ipass1 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(2) > .form-control")))
+		#ipass2 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".form-group:nth-child(3) > .form-control")))
 		#driver.implicitly_wait(3)
 		if iemail.get_attribute("value"):
 			print('sua lai email')
@@ -102,13 +102,13 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 			print('nhập xong')
 		#driver.implicitly_wait(3)
 		try:
-			element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//div[2]/button")))
+			element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[2]/button")))
 			#element = driver.find_element(By.XPATH, "//div[2]/button")
 			element.location_once_scrolled_into_view
 			element.click()
 			print('pa1 dang ky')
 		except:
-			element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
+			element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
 			#element = driver.find_element(By.XPATH, "(//button[@type=\'button\'])[3]")
 			driver.execute_script("arguments[0].scrollIntoView();", element)
 			driver.execute_script("arguments[0].click();", element)
@@ -122,7 +122,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	print('Trang quan tri dashboard')
 
 	try:
-		WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".tbclose-btn"))).click()
+		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".tbclose-btn"))).click()
 		#driver.find_element(By.CSS_SELECTOR, ".tbclose-btn").click()
 	except Exception as e:
 		print('ko co qc sau khi dang nhap')
@@ -136,7 +136,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		driver.execute_script("window.scrollTo(0,306)")
 		driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div[2]/div/div/div[2]/div/div[2]/a").click()
 		#element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
-		element = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.LINK_TEXT, "Chuyển đến Clash For Android")))
+		element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, "Chuyển đến Clash For Android")))
 		url = element.get_attribute("href")
 		result = url.split("url=")[1].split("&name=")[0]
 		print("result=")
