@@ -66,9 +66,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		print(driver.current_url)
 		print('Thu chuyen toi trang dang ky')
 		try:
-			#driver.close
-			#driver.get("https://tnetz.pro/#/register")
-			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			element = driver.find_element(By.XPATH, "//a[contains(@href, \'#/register\')]")
 			#element.click()
 			driver.execute_script("arguments[0].click();", element)
 			print('an dang ky')
@@ -76,6 +75,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print('ko an duoc nut dang ky, thu chay bang link')
 			#driver.get(oweb + "register")
 			#driver.get("#/register")
+			driver.close
 			driver.get("https://tnetz.pro/#/register")
 			pass
 		time.sleep(1)
