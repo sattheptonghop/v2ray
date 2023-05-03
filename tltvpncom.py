@@ -115,24 +115,24 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					print("loi khi nhap email, pass")
 					print(e)
 					pass
-			try:
-				print("Chuyển sang iframe")
-				iframe = driver.find_element(By.XPATH, '//iframe')
-				driver.switch_to.frame(iframe)
-			except:
-				print("Ko Chuyển sang iframe dc")
-				pass
+
 			print('thu an nut dang ky')
 			try:
 				element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
 				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
+				try:
+					print("Chuyển sang iframe")
+					iframe = driver.find_element(By.XPATH, '//iframe')
+					driver.switch_to.frame(iframe)
+				except:
+					print("Ko Chuyển sang iframe dc")
+					pass
 				driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
 			except Exception as e:
 				#ko duoc
 				print('ko an duoc nut dang ky')
-				print(e)
 				# Tìm tất cả các phần tử HTML có thể click được và in ra tên của chúng
 				elements = driver.find_elements(By.XPATH, '//*[@onclick or @href]')
 				for element in elements:
