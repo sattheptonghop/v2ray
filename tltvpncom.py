@@ -44,7 +44,7 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://tnetz.pro/#/register | 
-driver.get("https://tnetz.pro/#/register")
+driver.get("https://tnetz.pro/#/login")
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
@@ -60,7 +60,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 		print(driver.current_url)
 		print('Thu chuyen toi trang dang ky')
 		try:
-			element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
+			element = driver.find_element(By.CSS_SELECTOR, ".btn:nth-child(2)")
 			element.click()
 			print('an dang ky')
 		except:
