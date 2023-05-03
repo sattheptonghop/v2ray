@@ -48,7 +48,7 @@ driver.set_window_size(360, 720)
 #driver.get("https://trumvpn.pro/")
 driver.get("https://trumvpn.pro/#/register")
 # 3 | click | css=.tbclose-btn | 
-driver.implicitly_wait(10)
+driver.implicitly_wait(1)
 try:
 	element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
 	element.click()
@@ -63,7 +63,7 @@ except:
 #	print('an dang ky')
 #except:
 #	pass
-#driver.implicitly_wait(10)
+#driver.implicitly_wait(1)
 
 # 7 | executeScript | return Math.random(). toString(36).substring(2,16) | ticket
 ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
@@ -91,7 +91,7 @@ while driver.current_url != "https://trumvpn.pro/#/dashboard":
 		pass
 	# 8 | type | css=.input-group > .form-control | ${ticket}
 	try:
-		driver.implicitly_wait(10)
+		driver.implicitly_wait(1)
 		driver.find_element(By.CSS_SELECTOR, ".input-group > .form-control").send_keys("1")
 	except Exception as e:
 		print(e)
