@@ -132,9 +132,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 			pass
 
 	if iLoop == 15:
-		print(iLoop)
-		iLoop = iLoop + 1
 		break
+	else:
+		iLoop = iLoop + 1
 if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 	print('Trang quan tri dashboard')
 
