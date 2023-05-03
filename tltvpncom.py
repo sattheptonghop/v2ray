@@ -66,7 +66,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard" and drive
 			print('an dang ky')
 		except:
 			print('ko an duoc nut dang ky, thu chay bang link')
-			driver.get(oweb + "register")
+			#driver.get(oweb + "register")
+			driver.get("https://tnetz.pro/#/register")
 			pass
 		#if driver.execute_script("return document.readyState") == "complete":
 			
