@@ -143,12 +143,15 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print("khong co iemail")
 			print(e)
 			pass
+		print("Bat dau Chuyển lai iframe")
+		print(driver.current_url)
 		try:
 			print("Chuyển lai iframe")
 			driver.switch_to.default_content()
 		except:
 			print("Ko Chuyển lai iframe dc")
 			pass
+		print(driver.current_url)
 	if iLoop == 5:
 		break
 	else:
