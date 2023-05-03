@@ -201,5 +201,6 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		pass
 	
 # Đóng trình duyệt web
+driver.save_screenshot('tltvpncom.png')
 driver.close()
 driver.quit()
