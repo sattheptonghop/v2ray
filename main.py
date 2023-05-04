@@ -1,6 +1,11 @@
+#driver = Chrome
 from selenium.webdriver import Chrome
+#service
 from selenium.webdriver.chrome.service import Service
+#chrome_options
 from selenium.webdriver.chrome.options import Options
+#By.NAME
+from selenium.webdriver.common.by import By
 
 def test_google_search():
     # Khởi tạo Chrome Driver Service
