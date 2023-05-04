@@ -14,7 +14,7 @@ def test_google_search():
     service.start()
     #
     firefox_options = Options()
-    firefox_options.headless = True
+    firefox_options.add_argument('-headless')
     # Khởi tạo trình duyệt Chrome
     driver = Firefox(service=service, options=firefox_options)
     # Mở trang Google
