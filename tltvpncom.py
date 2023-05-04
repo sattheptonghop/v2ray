@@ -21,7 +21,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 chrome_service = Service(ChromeDriverManager().install())
 chrome_options = Options()
 options = [
-	"--headless",
+	#"--headless",
 	"--window-size=800,1200",
 	"start-maximized",
 	"disable-infobars",
@@ -31,8 +31,8 @@ options = [
 	"--no-sandbox",
 	"--disable-dev-shm-usage"
 ]
-#for option in options:
-#    chrome_options.add_argument(option)
+for option in options:
+    chrome_options.add_argument(option)
 
 mobile_emulation = {
     "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
