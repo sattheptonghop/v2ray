@@ -22,17 +22,17 @@ chrome_service = Service(ChromeDriverManager().install())
 chrome_options = Options()
 options = [
 	"--headless",
-	#"--window-size=800,1200",
+	"--window-size=800,1200",
 	"start-maximized",
-	#"disable-infobars",
-	#"--disable-gpu",
-	#"--ignore-certificate-errors",
-	#"--disable-extensions",
-	#"--no-sandbox",
+	"disable-infobars",
+	"--disable-gpu",
+	"--ignore-certificate-errors",
+	"--disable-extensions",
+	"--no-sandbox",
 	"--disable-dev-shm-usage"
 ]
-for option in options:
-    chrome_options.add_argument(option)
+#for option in options:
+#    chrome_options.add_argument(option)
 
 mobile_emulation = {
     "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
