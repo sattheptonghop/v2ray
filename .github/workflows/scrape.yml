@@ -5,7 +5,7 @@ on:
     - cron: "0 */2 * * *"
 jobs:
   scrape:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out this repo
         uses: actions/checkout@v2
