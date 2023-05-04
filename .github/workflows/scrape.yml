@@ -15,10 +15,12 @@ jobs:
           python-version: '3.9'
       - name: Installed package list
         run: apt list --installed
-      - name: Installed display xvfb
+      - name: Installed xvfb
         run: |-
           sudo apt update
           sudo apt install xvfb
+      - name: Display xvfb
+        run: |-
           export DISPLAY=:99
           Xvfb :99 -screen 0 1024x768x16
       - name: Remove Chrome
