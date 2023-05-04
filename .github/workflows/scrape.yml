@@ -17,7 +17,8 @@ jobs:
         run: apt list --installed
       - name: Installed display xvfb
         run: |-
-          sudo apt-get install xvfb
+          sudo apt update
+          sudo apt install xvfb
           export DISPLAY=:99
           Xvfb :99 -screen 0 1024x768x16
       - name: Remove Chrome
