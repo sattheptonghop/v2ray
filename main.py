@@ -15,7 +15,7 @@ def test_google_search():
     # Mở trang Google
     driver.get('https://www.google.com')
     # Tìm ô tìm kiếm và nhập từ khóa "GitHub"
-    search_box = driver.find_element_by_name('q')
+    search_box = driver.find_element(By.NAME, 'q')
     search_box.send_keys('GitHub')
     search_box.submit()
     # Kiểm tra xem kết quả có chứa từ khóa "GitHub" không
