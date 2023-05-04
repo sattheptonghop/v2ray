@@ -3,10 +3,10 @@ from selenium.webdriver.chrome.service import Service
 
 def test_google_search():
     # Khởi tạo Chrome Driver Service
-    service = Service("/usr/local/bin/chromedriver")
-    service.start()
+    #service = Service("/usr/local/bin/chromedriver")
+    #service.start()
     # Khởi tạo trình duyệt Chrome
-    driver = Chrome(service=service)
+    driver = Chrome()
     # Mở trang Google
     driver.get('https://www.google.com')
     # Tìm ô tìm kiếm và nhập từ khóa "GitHub"
