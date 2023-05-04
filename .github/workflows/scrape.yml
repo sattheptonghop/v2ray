@@ -15,6 +15,11 @@ jobs:
           python-version: '3.9'
       - name: Installed package list
         run: apt list --installed
+      - name: Installed display xvfb
+        run: |-
+          sudo apt-get install xvfb
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1024x768x16
       - name: Remove Chrome
         run: sudo apt purge google-chrome-stable
       - name: Remove default Chromium
