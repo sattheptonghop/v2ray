@@ -17,12 +17,9 @@ jobs:
         run: apt list --installed
       - name: Installed xvfb
         run: |-
-          sudo apt update
-          sudo apt install xvfb
-      - name: Display xvfb
-        run: |-
+          sudo apt-get install -y xvfb
           export DISPLAY=:99
-          Xvfb :99 -screen 0 1024x768x16
+          Xvfb :99 -screen 0 1024x768x16 > /dev/null 2>&1 &
       - name: Remove Chrome
         run: sudo apt purge google-chrome-stable
       - name: Remove default Chromium
