@@ -39,8 +39,7 @@ mobile_emulation = {
     "userAgent": "Mozilla/5.0 (Android 12; Mobile; LG-M255; rv:100.0) Gecko/100.0 Firefox/100.0Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.61 Mobile Safari/537.36"
 }
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('--headless')
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
