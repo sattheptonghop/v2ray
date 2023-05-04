@@ -3,8 +3,9 @@ from selenium.webdriver.chrome.service import Service
 
 def test_google_search():
     # Khởi tạo Chrome Driver Service
-    #service = Service("/usr/local/bin/chromedriver")
-    #service.start()
+    service = Service("/usr/bin/chromedriver")
+    #service = Service("/usr/local/share/chrome_driver/chromedriver")
+    service.start()
     # Khởi tạo trình duyệt Chrome
     driver = Chrome()
     # Mở trang Google
