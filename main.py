@@ -1,13 +1,17 @@
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
 def test_google_search():
     # Khởi tạo Chrome Driver Service
     service = Service("/usr/bin/chromedriver")
     #service = Service("/usr/local/share/chrome_driver/chromedriver")
     service.start()
+    #
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
     # Khởi tạo trình duyệt Chrome
-    driver = Chrome()
+    driver = Chrome(service=service, options=chrome_options)
     # Mở trang Google
     driver.get('https://www.google.com')
     # Tìm ô tìm kiếm và nhập từ khóa "GitHub"
