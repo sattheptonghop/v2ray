@@ -133,7 +133,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
-				driver.save_screenshot('tltvpncom-' + iLoop + 'pa1.png')
+				driver.save_screenshot("tltvpncom-" + iLoop + "pa1.png")
 			except Exception as e:
 				#ko duoc
 				print('ko an duoc nut dang ky')
@@ -146,7 +146,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
-			driver.save_screenshot('tltvpncom-' + iLoop + 'im.png')
+			driver.save_screenshot("tltvpncom-" + iLoop + "im.png")
 			pass
 		##print("Bat dau Chuyển lai iframe")
 		##print(driver.current_url)
@@ -228,6 +228,6 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 
 	
 # Đóng trình duyệt web
-driver.save_screenshot('tltvpncom-10.png')
+driver.save_screenshot("tltvpncom-10.png")
 driver.close()
 driver.quit()
