@@ -133,18 +133,20 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
+				driver.save_screenshot('tltvpncom-' + iLoop + 'pa1.png')
 			except Exception as e:
 				#ko duoc
 				print('ko an duoc nut dang ky')
 				# Tìm tất cả các phần tử HTML có thể click được và in ra tên của chúng
-				elements = driver.find_elements(By.XPATH, '//*[@onclick or @href]')
-				for element in elements:
-				    print(element.get_attribute('outerHTML'))
+				#elements = driver.find_elements(By.XPATH, '//*[@onclick or @href]')
+				#for element in elements:
+				#    print(element.get_attribute('outerHTML'))
 				pass
 
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
+			driver.save_screenshot('tltvpncom-' + iLoop + 'im.png')
 			pass
 		##print("Bat dau Chuyển lai iframe")
 		##print(driver.current_url)
@@ -226,6 +228,6 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 
 	
 # Đóng trình duyệt web
-driver.save_screenshot('tltvpncom.png')
+driver.save_screenshot('tltvpncom-10.png')
 driver.close()
 driver.quit()
