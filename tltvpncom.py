@@ -112,7 +112,13 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					ipass2.send_keys("63668890")
 					print('nhập xong')
 					print(iemail.get_attribute("value"))
-					driver.save_screenshot("tltvpncom-" + str(iLoop) + "ip.png")
+					try:
+						element = driver.find_element(By.CSS_SELECTOR, ".tbclose-btn")
+						element.click()
+						print('dong thong bao')
+					except:
+						pass
+					driver.save_screenshot("tltvpncom-" + str(iLoop) + "nhapxong.png")
 				except Exception as e:
 					print("loi khi nhap email, pass")
 					print(e)
