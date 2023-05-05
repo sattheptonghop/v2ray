@@ -170,6 +170,9 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		pass
 
 	print('Lấy link clash')
+	chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+	driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+	driver.refresh()
 	try:
 		element = driver.find_element(By.CSS_SELECTOR, ".row:nth-child(1) .font-size-base")
 		actions = ActionChains(driver)
