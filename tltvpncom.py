@@ -127,8 +127,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print('thu an nut dang ky')
 			driver.save_screenshot("pic/tltvpncom" + str(iLoop) + "tandk.png")
 			try:
-				element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//main[@id=\'main-container\']/div/div/div/div/div[2]/div/div[2]/button")))
-				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
+				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//main[@id=\'main-container\']/div/div/div/div/div[2]/div/div[2]/button")))
+				element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
 				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
 				#3print("Bat dau Chuyển iframe")
 				##print(driver.current_url)
