@@ -59,6 +59,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 	if re.search(r"/#/(.*)",driver.current_url).group(1) == "login":
 		print(driver.current_url)
 		print('Thu chuyen toi trang dang ky')
+		driver.save_screenshot("tltvpncom-" + str(iLoop) + "tcttdk.png")
 		try:
 			#element = driver.find_element(By.LINK_TEXT, "Đăng ký")
 			element = driver.find_element(By.XPATH, "//main[@id=\'main-container\']/div/div/div/div[2]/div/form/div[2]/p/a[2]")
@@ -111,12 +112,14 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					ipass2.send_keys("63668890")
 					print('nhập xong')
 					print(iemail.get_attribute("value"))
+					driver.save_screenshot("tltvpncom-" + str(iLoop) + "ip.png")
 				except Exception as e:
 					print("loi khi nhap email, pass")
 					print(e)
 					pass
 
 			print('thu an nut dang ky')
+			driver.save_screenshot("tltvpncom-" + str(iLoop) + "tandk.png")
 			try:
 				element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//main[@id=\'main-container\']/div/div/div/div/div[2]/div/div[2]/button")))
 				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
@@ -133,7 +136,6 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
-				driver.save_screenshot("tltvpncom-" + str(iLoop) + "pa1.png")
 			except Exception as e:
 				#ko duoc
 				print('ko an duoc nut dang ky')
@@ -146,7 +148,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
-			driver.save_screenshot("tltvpncom-" + str(iLoop) + "im.png")
+			driver.save_screenshot("tltvpncom-" + str(iLoop) + "kci.png")
 			pass
 		##print("Bat dau Chuyển lai iframe")
 		##print(driver.current_url)
