@@ -38,7 +38,7 @@ mobile_emulation = {
     "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
     "userAgent": "Mozilla/5.0 (Android 12; Mobile; LG-M255; rv:100.0) Gecko/100.0 Firefox/100.0Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.61 Mobile Safari/537.36"
 }
-chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+#chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
@@ -121,15 +121,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//main[@id=\'main-container\']/div/div/div/div/div[2]/div/div[2]/button")))
 				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
 				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
-				print("Bat dau Chuyển iframe")
-				print(driver.current_url)
-				try:
-					print("Chuyển sang iframe")
-					iframe = driver.find_element(By.XPATH, '//iframe[2]')
-					driver.switch_to.frame(iframe)
-				except:
-					print("Ko Chuyển sang iframe dc")
-					pass
+
 				driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
@@ -141,7 +133,15 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				for element in elements:
 				    print(element.get_attribute('outerHTML'))
 				pass
-
+			print("Bat dau Chuyển iframe")
+			print(driver.current_url)
+			try:
+				print("Chuyển sang iframe")
+				iframe = driver.find_element(By.XPATH, '//iframe[2]')
+				driver.switch_to.frame(iframe)
+			except:
+				print("Ko Chuyển sang iframe dc")
+				pass
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
