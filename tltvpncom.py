@@ -135,19 +135,19 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					print('ko an duoc nut dong y dieu kien')
 					pass
 				try:
-				    btn = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
-				    btn.click()
-				except TimeoutException:
-				    print('Không tìm thấy button có class là "btn-block"')
-				    try:
-					btn = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".fa-fw")))
+					btn = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
 					btn.click()
-				    except TimeoutException:
-					print('Không tìm thấy button có class là ".fa-fw"')
-				    except Exception as ex:
-					print('Lỗi:', ex)
+				except TimeoutException:
+					print('Không tìm thấy button có class là "btn-block"')
+					try:
+						btn = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".fa-fw")))
+						btn.click()
+					except TimeoutException:
+						print('Không tìm thấy button có class là ".fa-fw"')
+					except Exception as ex:
+						print('Lỗi:', ex)
 				except Exception as ex:
-				    print('Lỗi:', ex)
+					print('Lỗi:', ex)
 				#3print("Bat dau Chuyển iframe")
 				##print(driver.current_url)
 				##try:
