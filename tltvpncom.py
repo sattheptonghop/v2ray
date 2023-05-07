@@ -109,9 +109,12 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				try:
 					print('Đăng ký và đăng nhập')
 					ticket = driver.execute_script("return Math.random(). toString(36).substring(2,16)")
+					iemail.click()
 					iemail.send_keys(ticket)
 					iemail.send_keys("@gmail.com")
+					ipass1.click()
 					ipass1.send_keys("63668890")
+					ipass2.click()
 					ipass2.send_keys("63668890")
 					print('nhập xong')
 					print(iemail.get_attribute("value"))
@@ -130,22 +133,22 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print('thu an nut dang ky')
 			driver.save_screenshot("pic/tltvpncom" + str(iLoop) + "tandk.png")
 			try:
-				print("Bat dau Chuyển iframe")
-				print(driver.current_url)
+				##print("Bat dau Chuyển iframe")
+				##print(driver.current_url)
+				##try:
+				##	print("Chuyển sang iframe")
+				##	iframe = driver.find_element(By.XPATH, '//iframe[2]')
+				##	driver.switch_to.frame(iframe)
+				##except:
+				##	print("Ko Chuyển sang iframe dc")
+				##	pass
 				try:
-					print("Chuyển sang iframe")
-					iframe = driver.find_element(By.XPATH, '//iframe[2]')
-					driver.switch_to.frame(iframe)
-				except:
-					print("Ko Chuyển sang iframe dc")
-					pass
-				try:
-					driver.find_element(By.XPATH, "//label[contains(.,\'Tôi đã đọc và đồng ý điều khoản dịch vụ\')]").click()
+					driver.find_element(By.ID, "signup-terms").click()
 				except:
 					print('ko an duoc nut dong y dieu kien')
 					pass
 				try:
-					driver.find_element(By.XPATH, "//div[2]/button/i").click()
+					driver.find_element(By.CSS_SELECTOR, ".btn-block").click()
 				except TimeoutException:
 					print('Không tìm thấy button có class là "btn-block"')
 					try:
@@ -174,15 +177,15 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print(e)
 			driver.save_screenshot("pic/tltvpncom" + str(iLoop) + "kci.png")
 			pass
-		print("Bat dau Chuyển lai iframe")
-		print(driver.current_url)
-		try:
-			print("Chuyển lai iframe")
-			driver.switch_to.default_content()
-		except:
-			print("Ko Chuyển lai iframe dc")
-			pass
-		print(driver.current_url)
+		##print("Bat dau Chuyển lai iframe")
+		##print(driver.current_url)
+		##try:
+		##	print("Chuyển lai iframe")
+		##	driver.switch_to.default_content()
+		##except:
+		##	print("Ko Chuyển lai iframe dc")
+		##	pass
+		##print(driver.current_url)
 	if iLoop == 3:
 		break
 	else:
