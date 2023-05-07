@@ -18,7 +18,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from chromedriver_binary import chromedriver_binary_path
+#from chromedriver_binary import chromedriver_binary_path
 
 chrome_service = Service(ChromeDriverManager().install())
 chrome_options = Options()
@@ -41,7 +41,8 @@ mobile_emulation = {
     "userAgent": "Mozilla/5.0 (Android 12; Mobile; LG-M255; rv:100.0) Gecko/100.0 Firefox/100.0Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.61 Mobile Safari/537.36"
 }
 chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-driver = webdriver.Chrome(executable_path=chromedriver_binary_path, service=chrome_service, options=chrome_options)
+#driver = webdriver.Chrome(executable_path=chromedriver_binary_path, service=chrome_service, options=chrome_options)
+driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
@@ -129,8 +130,6 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print('thu an nut dang ky')
 			driver.save_screenshot("pic/tltvpncom" + str(iLoop) + "tandk.png")
 			try:
-				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//main[@id=\'main-container\']/div/div/div/div/div[2]/div/div[2]/button")))
-				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
 				try:
 					driver.find_element(By.CSS_SELECTOR, ".custom-control-label").click()
 				except:
