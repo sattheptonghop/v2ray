@@ -35,7 +35,7 @@ jobs:
           pip install --upgrade pip
           #pip install beautifulsoup4 pandas
           pip install webdriver-manager selenium
-          pip install chromedriver-helper
+          #pip install chromedriver-binary
           pip install pytest requests
       - name: Run trumpro.py
         run: |-
