@@ -43,8 +43,8 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
-# 2 | open | https://tnetz.pro/#/register | 
-driver.get("https://tnetz.pro/#/register")
+# 2 | open | https://4pn.me/#/register | 
+driver.get("https://4pn.me/#/register")
 
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
@@ -128,8 +128,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			driver.save_screenshot("pic/tltvpncom" + str(iLoop) + "tandk.png")
 			try:
 				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//main[@id=\'main-container\']/div/div/div/div/div[2]/div/div[2]/button")))
-				element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
-				#element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]")))
+				#element = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-block")))
+				WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[2]"))).click()
+				WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.XPATH, "(//button[@type=\'button\'])[3]"))).click()
 				#3print("Bat dau Chuyển iframe")
 				##print(driver.current_url)
 				##try:
@@ -139,16 +140,16 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				##except:
 				##	print("Ko Chuyển sang iframe dc")
 				##	pass
-				driver.execute_script("arguments[0].click();", element)
+				#driver.execute_script("arguments[0].click();", element)
 				print('an nut dang ky pa1')
 				print(driver.current_url)
 			except Exception as e:
 				#ko duoc
 				print('ko an duoc nut dang ky')
 				# Tìm tất cả các phần tử HTML có thể click được và in ra tên của chúng
-				#elements = driver.find_elements(By.XPATH, '//*[@onclick or @href]')
-				#for element in elements:
-				#    print(element.get_attribute('outerHTML'))
+				elements = driver.find_elements(By.XPATH, '//*[@onclick or @href]')
+				for element in elements:
+				    print(element.get_attribute('outerHTML'))
 				pass
 
 		except Exception as e:
@@ -165,7 +166,7 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 		##	print("Ko Chuyển lai iframe dc")
 		##	pass
 		##print(driver.current_url)
-	if iLoop == 5:
+	if iLoop == 3:
 		break
 	else:
 		iLoop = iLoop + 1
