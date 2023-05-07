@@ -15,11 +15,11 @@ jobs:
           python-version: '3.9'
       - name: Installed package list
         run: apt list --installed
-      - name: Installed xvfb
-        run: |-
-          sudo apt-get install -y xvfb
-          export DISPLAY=:99
-          Xvfb :99 -screen 0 1024x768x16 > /dev/null 2>&1 &
+      #- name: Installed xvfb
+      #  run: |-
+      #    sudo apt-get install -y xvfb
+      #    export DISPLAY=:99
+      #    Xvfb :99 -screen 0 1024x768x16 > /dev/null 2>&1 &
       #- name: Remove Chrome
       #  run: sudo apt purge google-chrome-stable
       #- name: Remove default Chromium
@@ -35,6 +35,7 @@ jobs:
           pip install --upgrade pip
           #pip install beautifulsoup4 pandas
           pip install webdriver-manager selenium
+          pip install chromedriver-helper
           pip install pytest requests
       - name: Run trumpro.py
         run: |-
