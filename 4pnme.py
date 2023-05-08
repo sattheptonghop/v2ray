@@ -222,7 +222,7 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		#element = driver.find_element(By.LINK_TEXT, "Chuyển đến Clash For Android")
 		element = WebDriverWait(driver, 1).until(EC.element_to_be_clickable((By.LINK_TEXT, "Chuyển đến Clash For Android")))
 		url = element.get_attribute("href")
-		result = url.split("url=")[1].split("&name=")[0]
+		result = "https://convert.v2ray-subscribe.workers.dev/?url=" + url.split("url=")[1].split("&name=")[0]
 		print("result=")
 		print(result)
 		
