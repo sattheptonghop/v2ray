@@ -228,14 +228,14 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		
 		# Mở tệp CSV để ghi dữ liệu
 		today = datetime.datetime.now()
-		with open('tltvpncom', mode='r', newline='') as vpn_file:
+		with open('tltvpncom.txt', mode='r', newline='') as vpn_file:
 			reader = csv.reader(vpn_file)
 			rows = list(reader)
 			countrow = len(rows)
 			print("countrow=", countrow)
 
 		# Ghi file mới với nội dung đã chỉnh sửa
-		with open('tltvpncom', 'w', newline='') as file:
+		with open('tltvpncom.txt', 'w', newline='') as file:
 			writer = csv.writer(file)
 			if countrow >= 24:
 				print("số dòng hơn 24")
