@@ -37,9 +37,9 @@ jobs:
           pip install webdriver-manager selenium
           #pip install chromedriver-binary
           pip install pytest requests
-      - name: Run trumpro.py
-        run: |-
-          python trumpro.py
+      #- name: Run trumpro.py
+      #  run: |-
+      #    python trumpro.py
       - name: Run tltvpncom.py
         run: |-
           python tltvpncom.py
