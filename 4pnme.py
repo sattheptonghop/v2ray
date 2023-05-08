@@ -237,12 +237,12 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 		# Ghi file mới với nội dung đã chỉnh sửa
 		with open('tltvpncom.txt', 'w', newline='') as file:
 			writer = csv.writer(file)
-			if countrow >= 24:
-				print("số dòng hơn 24")
+			if countrow >= 5:
+				print("số dòng hơn 5")
 				for row in rows[1:]:
 					writer.writerow(row)
 			else:
-				print("số dòng ít hơn 24")
+				print("số dòng ít hơn 5")
 				for row in rows:
 					writer.writerow(row)
 			writer.writerow([result])
