@@ -124,7 +124,7 @@ try:
 	today = datetime.datetime.now()
 	#if today.hour >= 0 and today.hour < 2:
 	    # Mở tệp tin VPN sử dụng mode 'r+' để đọc và ghi
-	with open('trumpro', mode='r', newline='') as vpn_file:
+	with open('trumpro.txt', mode='r', newline='') as vpn_file:
 		reader = csv.reader(vpn_file)
 		rows = list(reader)
 		countrow = len(rows)
@@ -138,7 +138,7 @@ try:
 	#os.remove('vpn')
 
 	# Ghi file mới với nội dung đã chỉnh sửa
-	with open('trumpro', 'w', newline='') as file:
+	with open('trumpro.txt', 'w', newline='') as file:
 		writer = csv.writer(file)
 		if countrow >= 11:
 			print("số dòng hơn 12")
