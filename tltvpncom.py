@@ -133,7 +133,9 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 			print("Bat dau an nut dong y dieu khoan")
 			try:
 				if driver.execute_script("return (document.querySelector(\"#signup-terms\").checked != true)"):
-					driver.find_element(By.CSS_SELECTOR, "#signup-terms").click()
+					element = driver.find_element(By.CSS_SELECTOR, "#signup-terms")
+					element.send_keys(Keys.TAB)
+					element.send_keys(Keys.RETURN)
 			except Exception as e:
 				print(e)
 				pass
