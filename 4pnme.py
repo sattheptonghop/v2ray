@@ -266,6 +266,6 @@ if re.search(r"/#/(.*)",driver.current_url).group(1) == "dashboard":
 
 	
 # Đóng trình duyệt web
-#driver.save_screenshot("pic/tltvpncom10.png")
+driver.save_screenshot("pic/tltvpncom10.png")
 driver.close()
 driver.quit()
