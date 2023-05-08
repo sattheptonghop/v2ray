@@ -179,7 +179,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				    print(element.get_attribute('outerHTML'))
 				pass
 			print('Ket thuc an nut dang ky')
-			
+		wait = WebDriverWait(driver, 10)
+		wait.until(lambda driver: driver.execute_script('return document.readyState') == 'complete')
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
