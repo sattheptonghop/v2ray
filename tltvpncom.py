@@ -142,11 +142,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				##except:
 				##	print("Ko Chuyển sang iframe dc")
 				##	pass
-				try:
-					driver.find_element(By.ID, "signup-terms").click()
-				except:
-					print('ko an duoc nut dong y dieu kien')
-					pass
+				if driver.execute_script("return (document.querySelector(\"#signup-terms\").checked != true)"):
+					driver.find_element(By.CSS_SELECTOR, "#signup-terms").click()
 				try:
 					driver.find_element(By.CSS_SELECTOR, ".btn-block").click()
 				except TimeoutException:
