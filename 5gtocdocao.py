@@ -47,7 +47,7 @@ driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 # 1 | setWindowSize | 500x1200 | 
 driver.set_window_size(360, 720)
 # 2 | open | https://5gtocdocao.com/#/register | 
-driver.get("https://5gtocdocao.com/#/register")
+driver.get("https://5gtocdocao.com/#/login")
 time.sleep(10)
 iLoop = 0
 oweb = re.search(r"(.*/#/)", driver.current_url).group(0)
