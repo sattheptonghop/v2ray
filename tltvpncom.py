@@ -130,8 +130,17 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 					print(e)
 					pass
 
-			print('thu an nut dang ky')
+			print("Bat dau an nut dong y dieu khoan")
+			try:
+				if driver.execute_script("return (document.querySelector(\"#signup-terms\").checked != true)"):
+					driver.find_element(By.CSS_SELECTOR, "#signup-terms").click()
+			except Exception as e:
+				print(e)
+				pass
+			print("Ket thuc an nut dong y dieu khoan")
+			
 			driver.save_screenshot("pic/tltvpncom" + str(iLoop) + "tandk.png")
+			print('Bat dau an nut dang ky')
 			try:
 				##print("Bat dau Chuyển iframe")
 				##print(driver.current_url)
@@ -142,10 +151,6 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				##except:
 				##	print("Ko Chuyển sang iframe dc")
 				##	pass
-				if driver.execute_script("return (document.querySelector(\"#signup-terms\").checked != true)"):
-					driver.find_element(By.CSS_SELECTOR, "#signup-terms").click()
-				driver.save_screenshot("pic/tltvpncom" + str(iLoop) + "tandydk.png")
-				
 				try:
 					driver.find_element(By.CSS_SELECTOR, ".btn-block").click()
 				except TimeoutException:
@@ -170,7 +175,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				for element in elements:
 				    print(element.get_attribute('outerHTML'))
 				pass
-
+			print('Ket thuc an nut dang ky')
+			
 		except Exception as e:
 			print("khong co iemail")
 			print(e)
