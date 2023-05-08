@@ -37,12 +37,14 @@ jobs:
           pip install webdriver-manager selenium
           #pip install chromedriver-binary
           pip install pytest requests
-      #- name: Run trumpro.py
-      #  run: |-
-      #    python trumpro.py
+      - name: Run trumpro 4pnme
+        run: |-
+          python trumpro.py
+          python 4pnme.py
       - name: Run tltvpncom.py
         run: |-
-          python tltvpncom.py
+          echo "Thu nghiem"
+          echo python tltvpncom.py
       - name: Commit and push if content changed
         run: |-
           git config user.name "Automated"
