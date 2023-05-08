@@ -144,6 +144,8 @@ while re.search(r"/#/(.*)",driver.current_url).group(1) != "dashboard":
 				##	pass
 				if driver.execute_script("return (document.querySelector(\"#signup-terms\").checked != true)"):
 					driver.find_element(By.CSS_SELECTOR, "#signup-terms").click()
+				driver.save_screenshot("pic/tltvpncom" + str(iLoop) + "tandydk.png")
+				
 				try:
 					driver.find_element(By.CSS_SELECTOR, ".btn-block").click()
 				except TimeoutException:
