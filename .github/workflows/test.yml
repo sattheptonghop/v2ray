@@ -1,4 +1,4 @@
-name: scrape
+name: test new
 on:
   workflow_dispatch:
 jobs:
