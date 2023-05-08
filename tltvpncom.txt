@@ -2,3 +2,4 @@ https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/clien
 https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/651e9eaf0dd4c3720ab346758911f0ee
 https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/052302212013f49ba873d8dfe672ef34
 https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/49f364772c21eda2441c9ac56cccb44b
+https://convert.v2ray-subscribe.workers.dev/?url=https://sub.4pn.me/api/v1/client/931fc76ac56441dae54f418709bceb0a
