@@ -1,4 +1,4 @@
-name: test new
+name: reg test
 on:
   workflow_dispatch:
 jobs:
